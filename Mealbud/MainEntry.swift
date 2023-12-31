@@ -103,7 +103,7 @@ struct MainEntry: View {
             
             
             
-            
+            Divider()
             
             
             HStack {
@@ -116,20 +116,21 @@ struct MainEntry: View {
                         
                         Text("Tap to view order")
                             .fontWeight(.bold)
-                            .foregroundColor(.white)
+                            .font(.title2)
+//                            .foregroundColor(.white)
                         
                         
                         Spacer()
                         
                         Image(systemName: "arrow.up.circle.fill")
                             .resizable()
-                            .frame(width: 30, height: 30)
-                            .foregroundColor(.white)
+                            .frame(width: 40, height: 40)
+//                            .foregroundColor(.white)
                         
                     }
                     .padding(.horizontal, 30)
-                    .padding(.vertical, 16)
-                    .background(.black)
+                    .padding(.vertical, 5)
+//                    .background(.black)
                     .cornerRadius(14)
                     
                     
@@ -141,14 +142,14 @@ struct MainEntry: View {
             }
             
             
-            Spacer()
+         
             
             
             
             
         }.sheet(isPresented: $showingBottomSheet) {
             BottomSheetView()
-                .presentationDetents([.fraction(0.2), .fraction(0.4)])
+                .presentationDetents([.fraction(0.3)])
             
             
         }
@@ -186,87 +187,109 @@ struct BottomSheetView: View {
         
         
         
-                VStack {
-        
-        
-                    HStack {
-                        Text("Estimated delivery")
-                            .fontWeight(.semibold)
-                            .font(.subheadline)
-                            .padding(.horizontal, 30)
-        
-                        Spacer()
-        
-                    }
-        
-                    HStack {
-                        Text("8:33am – 8: 55am")
-                            .fontWeight(.light)
-                            .font(.title)
-        
-        
-                        Spacer()
-        
-                        Button {
-        
-                        } label: {
-                            Image(systemName: "message")
-                                .resizable()
-                                .frame(width: 25, height: 25)
-                                .padding(.horizontal, 15)
-                                .foregroundColor(.black)
-                        }
-        
-                        Button {
-        
-                        } label: {
-                            Image(systemName: "phone")
-                                .resizable()
-                                .frame(width: 25, height: 25)
-                                .foregroundColor(.black)
-        
-                        }
-        
-        
-                    }
-                    .padding(.horizontal, 30)
+                ZStack {
+                           
         
                     VStack {
-        
                         HStack {
-        
-        
-        
-                            Image("fettucine")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 60, height: 60)
-                                .cornerRadius(14)
-        
-        
+                            Text("Estimated delivery")
+                                .fontWeight(.semibold)
+                                .font(.subheadline)
+                                .padding(.horizontal, 30)
+            
                             Spacer()
-        
-        
-        
+            
                         }
-                        .padding(.horizontal, 30)
-        
-        
+                        
+                        HStack {
+                            
+                            HStack {
+                                Text("8:33am – 8: 55am")
+                                    
+                                    .fontWeight(.light)
+                                    .font(.title)
+                                    .padding(.horizontal, 14)
+                                  
+                
+                
+                                Spacer()
+                
+                                Button {
+                
+                                } label: {
+                                    Image(systemName: "message")
+                                        .resizable()
+                                        .frame(width: 25, height: 25)
+                                        .padding(.horizontal, 15)
+                                        .foregroundColor(.black)
+                                }
+                
+                                Button {
+                
+                                } label: {
+                                    Image(systemName: "phone")
+                                        .resizable()
+                                        .frame(width: 25, height: 25)
+                                        .foregroundColor(.black)
+                
+                                }
+                            }
+                            .padding()
+                            
+            
+            
+                        }
+                        .frame(maxWidth:.infinity)
+                        .background(Color.gray.opacity(0.1))
+                       
+//
+                       
+            
+                       
+                        HStack {
+                           
+                            HStack {
+                                Image("fettucine")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 50, height: 50)
+                                    .background(Color.blue)
+                                    .cornerRadius(14)
+                                
+                                VStack {
+                                    HStack {
+                                        Text("Fettucine Alfredo w/ Chicken")
+                                            .font(.subheadline)
+                                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                        
+                                        Spacer()
+                                    }
+                                   
+                                    HStack {
+                                        Text("Total: $12.65")
+                                            .font(.footnote)
+                                        Spacer()
+                                    }
+                                    
+                                }
+                                
+                                Spacer()
+                            }
+                            .padding(.top, 10)
+                            .padding(.horizontal, 30)
+                        }
                     }
-                    .padding(.vertical, 10)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.gray.opacity(0.2))
+                    
+                   
+                    
         
         
+                    
         
-        
-        
-                    Spacer()
-        
-        
+
         
                 }
-               
+       
         
         
         

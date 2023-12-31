@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C37A9102B4113F800ECF9A7 /* MenuBarOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C37A90F2B4113F800ECF9A7 /* MenuBarOptions.swift */; };
+		2C37A9122B4114CC00ECF9A7 /* MenuOptionsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C37A9112B4114CC00ECF9A7 /* MenuOptionsList.swift */; };
+		2C37A9142B41168E00ECF9A7 /* MenuItemSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C37A9132B41168E00ECF9A7 /* MenuItemSection.swift */; };
+		2C37A9162B4116F900ECF9A7 /* FoodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C37A9152B4116F900ECF9A7 /* FoodItem.swift */; };
+		2C37A91C2B411F5000ECF9A7 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C37A91B2B411F5000ECF9A7 /* MenuView.swift */; };
+		2C37A91E2B41205000ECF9A7 /* OffsetKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C37A91D2B41205000ECF9A7 /* OffsetKey.swift */; };
+		2C37A9202B41205800ECF9A7 /* OffsetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C37A91F2B41205800ECF9A7 /* OffsetModifier.swift */; };
 		2CAE16902B3F9673006E6372 /* MealbudApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE168F2B3F9673006E6372 /* MealbudApp.swift */; };
 		2CAE16922B3F9673006E6372 /* MainEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE16912B3F9673006E6372 /* MainEntry.swift */; };
 		2CAE16942B3F9674006E6372 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CAE16932B3F9674006E6372 /* Assets.xcassets */; };
@@ -15,6 +22,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C37A90F2B4113F800ECF9A7 /* MenuBarOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarOptions.swift; sourceTree = "<group>"; };
+		2C37A9112B4114CC00ECF9A7 /* MenuOptionsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOptionsList.swift; sourceTree = "<group>"; };
+		2C37A9132B41168E00ECF9A7 /* MenuItemSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemSection.swift; sourceTree = "<group>"; };
+		2C37A9152B4116F900ECF9A7 /* FoodItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItem.swift; sourceTree = "<group>"; };
+		2C37A91B2B411F5000ECF9A7 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		2C37A91D2B41205000ECF9A7 /* OffsetKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetKey.swift; sourceTree = "<group>"; };
+		2C37A91F2B41205800ECF9A7 /* OffsetModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetModifier.swift; sourceTree = "<group>"; };
 		2CAE168C2B3F9673006E6372 /* Mealbud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mealbud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CAE168F2B3F9673006E6372 /* MealbudApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealbudApp.swift; sourceTree = "<group>"; };
 		2CAE16912B3F9673006E6372 /* MainEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEntry.swift; sourceTree = "<group>"; };
@@ -55,6 +69,13 @@
 			children = (
 				2CAE168F2B3F9673006E6372 /* MealbudApp.swift */,
 				2CAE16912B3F9673006E6372 /* MainEntry.swift */,
+				2C37A9132B41168E00ECF9A7 /* MenuItemSection.swift */,
+				2C37A91B2B411F5000ECF9A7 /* MenuView.swift */,
+				2C37A91D2B41205000ECF9A7 /* OffsetKey.swift */,
+				2C37A91F2B41205800ECF9A7 /* OffsetModifier.swift */,
+				2C37A9152B4116F900ECF9A7 /* FoodItem.swift */,
+				2C37A9112B4114CC00ECF9A7 /* MenuOptionsList.swift */,
+				2C37A90F2B4113F800ECF9A7 /* MenuBarOptions.swift */,
 				2CE847132B3FBD5100CBAF9D /* CustomTabBar.swift */,
 				2CAE16932B3F9674006E6372 /* Assets.xcassets */,
 				2CAE16952B3F9674006E6372 /* Preview Content */,
@@ -140,9 +161,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C37A9122B4114CC00ECF9A7 /* MenuOptionsList.swift in Sources */,
+				2C37A9142B41168E00ECF9A7 /* MenuItemSection.swift in Sources */,
 				2CAE16922B3F9673006E6372 /* MainEntry.swift in Sources */,
+				2C37A9162B4116F900ECF9A7 /* FoodItem.swift in Sources */,
+				2C37A91C2B411F5000ECF9A7 /* MenuView.swift in Sources */,
+				2C37A91E2B41205000ECF9A7 /* OffsetKey.swift in Sources */,
 				2CE847142B3FBD5100CBAF9D /* CustomTabBar.swift in Sources */,
 				2CAE16902B3F9673006E6372 /* MealbudApp.swift in Sources */,
+				2C37A9102B4113F800ECF9A7 /* MenuBarOptions.swift in Sources */,
+				2C37A9202B41205800ECF9A7 /* OffsetModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +312,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -313,6 +342,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
