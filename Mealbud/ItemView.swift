@@ -10,15 +10,14 @@ import SwiftUI
 struct ItemView: View {
     var body: some View {
        
-        ZStack {
+       
             
-            VStack {
+        VStack {
                 
                 
-                GeometryReader { geometry in
                     
                     RoundedRectangle(cornerRadius: 14)
-                        .frame(width: geometry.size.width, height: geometry.size.height * 0.24)
+                        .frame(height: UIScreen.main.bounds.height * 0.24)
                         .foregroundColor(Color.red)
                         .overlay(
                             
@@ -42,26 +41,39 @@ struct ItemView: View {
                                     Spacer()
                                     
                                     HStack {
-                                        Text("Italian Sandwich")
-                                            .font(.custom("Uber Move Bold", size: 26))
-                                            .foregroundColor(.white)
-                                            .padding(.horizontal)
-                                        Spacer()
-                                        Text("$9.75")
-                                            .font(.custom("Uber Move Bold", size: 23))
-                                            .foregroundColor(.white)
-                                            .padding(.horizontal)
+                                        
+                                        VStack{
+                                            HStack {
+                                                Text("Italian Sandwich")
+                                                    .font(.custom("Uber Move Bold", size: 26))
+                                                    .foregroundColor(.white)
+                                                    .padding(.horizontal)
+                                                Spacer()
+                                               
+                                                
+                                            }
+                                            HStack {
+                                                Text("from Epic at Ackerman • 10+ min")
+                                                    .font(.custom("Uber Move Bold", size: 14))
+                                                    .foregroundColor(.white.opacity(0.9))
+                                                    .padding(.horizontal)
+                                                Spacer()
+                                                
+                                                
+                                            }
+                                        }
+                                        
+                                        VStack {
+                                            Text("$9.75")
+                                                .font(.custom("Uber Move Bold", size: 32))
+                                                .foregroundColor(.white)
+                                                .padding(.horizontal)
+                                            
+                                        }
                                         
                                     }
-                                    HStack {
-                                        Text("from Epic at Ackerman • 10+ min")
-                                            .font(.custom("Uber Move Bold", size: 14))
-                                            .foregroundColor(.white.opacity(0.9))
-                                            .padding(.horizontal)
-                                        Spacer()
-                                        
-                                        
-                                    }
+                                    
+                                   
                                     
                                     
                                 }
@@ -74,33 +86,19 @@ struct ItemView: View {
                             
                             
                         )
-                    
+                          
                   
-                }.ignoresSafeArea()
-                
-              
-            
-                
-                
-            
-                
-                
-                
-            }
-           
-            
-            
-            VStack {
-                
-                Text("Whatever")
                
-            }
-        
+                    
+            } .ignoresSafeArea()
            
-        }
+            
         
+            
+        Text("asd")
+    
+           Spacer()
      
-        
  
         
         
