@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MenuView: View {
     
+    @Environment(\.presentationMode) var presentationMode
     @State private var selectedOption: MenuBarOptions = .japanese
     @State private var currentOption: MenuBarOptions = .japanese
     
@@ -17,7 +18,7 @@ struct MenuView: View {
         VStack {
             HStack(spacing: 16) {
                 Button {
-                    
+                    presentationMode.wrappedValue.dismiss()
                 } label: {
                     Image(systemName: "arrow.left")
                         .font(.title2)
@@ -73,8 +74,10 @@ struct MenuView: View {
                 	
             }
         }
+        .navigationBarHidden(true)
         .padding(.top, 20)
     }
+    
 }
 
 #Preview {

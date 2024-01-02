@@ -19,6 +19,9 @@
 		2CAE16942B3F9674006E6372 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CAE16932B3F9674006E6372 /* Assets.xcassets */; };
 		2CAE16972B3F9674006E6372 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CAE16962B3F9674006E6372 /* Preview Assets.xcassets */; };
 		2CE847142B3FBD5100CBAF9D /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE847132B3FBD5100CBAF9D /* CustomTabBar.swift */; };
+		2CF0679B2B439DE400DABA09 /* Uber Move Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2CF0679A2B439DE400DABA09 /* Uber Move Medium.otf */; };
+		2CF0679D2B439ED500DABA09 /* Uber Move Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2CF0679C2B439ED500DABA09 /* Uber Move Bold.otf */; };
+		2CF067A22B43A28900DABA09 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF067A12B43A28900DABA09 /* ItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,10 @@
 		2CAE16932B3F9674006E6372 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CAE16962B3F9674006E6372 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2CE847132B3FBD5100CBAF9D /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		2CF067982B439AAA00DABA09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2CF0679A2B439DE400DABA09 /* Uber Move Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Uber Move Medium.otf"; sourceTree = "<group>"; };
+		2CF0679C2B439ED500DABA09 /* Uber Move Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Uber Move Bold.otf"; sourceTree = "<group>"; };
+		2CF067A12B43A28900DABA09 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,11 +74,16 @@
 		2CAE168E2B3F9673006E6372 /* Mealbud */ = {
 			isa = PBXGroup;
 			children = (
+				2CF067982B439AAA00DABA09 /* Info.plist */,
 				2CAE168F2B3F9673006E6372 /* MealbudApp.swift */,
 				2CAE16912B3F9673006E6372 /* MainEntry.swift */,
+				2CF067A12B43A28900DABA09 /* ItemView.swift */,
 				2C37A9132B41168E00ECF9A7 /* MenuItemSection.swift */,
+				2CF0679E2B439FD700DABA09 /* Restaurant */,
 				2C37A91B2B411F5000ECF9A7 /* MenuView.swift */,
+				2CF067A02B439FEF00DABA09 /* Item */,
 				2C37A91D2B41205000ECF9A7 /* OffsetKey.swift */,
+				2CF067992B439DAD00DABA09 /* Fonts */,
 				2C37A91F2B41205800ECF9A7 /* OffsetModifier.swift */,
 				2C37A9152B4116F900ECF9A7 /* FoodItem.swift */,
 				2C37A9112B4114CC00ECF9A7 /* MenuOptionsList.swift */,
@@ -89,6 +101,29 @@
 				2CAE16962B3F9674006E6372 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2CF067992B439DAD00DABA09 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2CF0679A2B439DE400DABA09 /* Uber Move Medium.otf */,
+				2CF0679C2B439ED500DABA09 /* Uber Move Bold.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		2CF0679E2B439FD700DABA09 /* Restaurant */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Restaurant;
+			sourceTree = "<group>";
+		};
+		2CF067A02B439FEF00DABA09 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Item;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,8 +184,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CF0679B2B439DE400DABA09 /* Uber Move Medium.otf in Resources */,
 				2CAE16972B3F9674006E6372 /* Preview Assets.xcassets in Resources */,
 				2CAE16942B3F9674006E6372 /* Assets.xcassets in Resources */,
+				2CF0679D2B439ED500DABA09 /* Uber Move Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +203,7 @@
 				2CAE16922B3F9673006E6372 /* MainEntry.swift in Sources */,
 				2C37A9162B4116F900ECF9A7 /* FoodItem.swift in Sources */,
 				2C37A91C2B411F5000ECF9A7 /* MenuView.swift in Sources */,
+				2CF067A22B43A28900DABA09 /* ItemView.swift in Sources */,
 				2C37A91E2B41205000ECF9A7 /* OffsetKey.swift in Sources */,
 				2CE847142B3FBD5100CBAF9D /* CustomTabBar.swift in Sources */,
 				2CAE16902B3F9673006E6372 /* MealbudApp.swift in Sources */,
@@ -307,6 +345,7 @@
 				DEVELOPMENT_TEAM = 26K5J6537C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Mealbud/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -337,6 +376,7 @@
 				DEVELOPMENT_TEAM = 26K5J6537C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Mealbud/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

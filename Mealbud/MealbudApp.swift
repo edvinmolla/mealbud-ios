@@ -11,7 +11,7 @@ import SwiftUI
 struct MealbudApp: App {
     var body: some Scene {
         WindowGroup {
-            MenuView()
+            MainEntry()
         }
     }
 }
