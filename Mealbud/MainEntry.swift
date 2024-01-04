@@ -10,15 +10,16 @@ import SwiftUI
 struct MainEntry: View {
     
     @State var showingBottomSheet = false
-    
-    
-    
+    @State var ordered = true
+   
     var body: some View {
         
         
         NavigationView {
             
             VStack(alignment: .leading) {
+                
+               
                 
                 Text("Delicious Delights")
                     .fontWeight(.bold)
@@ -171,67 +172,75 @@ struct MainEntry: View {
                 
                 
                 
-                Divider()
-                
-                
-                HStack {
+                if ordered {
                     
-                    Button {
-                        showingBottomSheet.toggle()
-                    } label: {
+                    Divider()
+                    
+                    
+                    HStack {
                         
-                        HStack {
+                        Button {
                             
-                            Spacer()
+                            showingBottomSheet.toggle()
+                        } label: {
                             
-                            VStack {
+                            HStack {
                                 
-                                HStack {
-                                    
-                                    Text("View Order")
-                                        .font(.custom("Uber Move Bold", size: 23))
-                                        .font(.title2)
-                                      
-                                    
                                 Spacer()
-                                    
-                                }
                                 
-                                
-                                HStack {
+                                VStack {
                                     
-                                    Text("Preparing ...")
-                                        .font(.custom("Uber Move Meium", size: 15))
-                                    
+                                    HStack {
+                                        
+                                        Text("View Order")
+                                            .font(.custom("Uber Move Bold", size: 23))
+                                            .font(.title2)
+                                          
+                                        
                                     Spacer()
-                                   
+                                        
+                                    }
+                                    
+                                    
+                                    HStack {
+                                        
+                                        Text("Preparing ...")
+                                            .font(.custom("Uber Move Meium", size: 15))
+                                        
+                                        Spacer()
+                                       
+                                    }
+                                    
+                                    
+                                    
                                 }
+                             
+                               
                                 
-                                
-                                
+                                Image(systemName: "arrow.up.circle.fill")
+                                    .resizable()
+                                    .frame(width: 40, height: 40)
+                          
+                                Spacer()
                             }
-                         
-                           
+                            .padding(.horizontal, 30)
+                            .padding(.vertical, 5)
+                            //                    .background(.black)
+                            .cornerRadius(14)
                             
-                            Image(systemName: "arrow.up.circle.fill")
-                                .resizable()
-                                .frame(width: 40, height: 40)
-                      
-                            Spacer()
+                            
                         }
-                        .padding(.horizontal, 30)
-                        .padding(.vertical, 5)
-                        //                    .background(.black)
-                        .cornerRadius(14)
-                        
+                        .buttonStyle(PlainButtonStyle())
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding(.horizontal, 25)
                         
                     }
-                    .buttonStyle(PlainButtonStyle())
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .padding(.horizontal, 25)
+                    
                     
                 }
                 
+                
+            
                 
                 
                 

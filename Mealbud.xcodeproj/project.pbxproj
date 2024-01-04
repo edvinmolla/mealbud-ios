@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C272CEF2B4680AF0064F539 /* SideRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C272CEE2B4680AF0064F539 /* SideRadio.swift */; };
+		2C34AA9F2B4670E6001C4CE2 /* discard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C34AA9E2B4670E6001C4CE2 /* discard.swift */; };
 		2C37A9102B4113F800ECF9A7 /* MenuBarOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C37A90F2B4113F800ECF9A7 /* MenuBarOptions.swift */; };
 		2C37A9122B4114CC00ECF9A7 /* MenuOptionsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C37A9112B4114CC00ECF9A7 /* MenuOptionsList.swift */; };
 		2C37A9142B41168E00ECF9A7 /* MenuItemSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C37A9132B41168E00ECF9A7 /* MenuItemSection.swift */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C272CEE2B4680AF0064F539 /* SideRadio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideRadio.swift; sourceTree = "<group>"; };
+		2C34AA9E2B4670E6001C4CE2 /* discard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = discard.swift; sourceTree = "<group>"; };
 		2C37A90F2B4113F800ECF9A7 /* MenuBarOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarOptions.swift; sourceTree = "<group>"; };
 		2C37A9112B4114CC00ECF9A7 /* MenuOptionsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOptionsList.swift; sourceTree = "<group>"; };
 		2C37A9132B41168E00ECF9A7 /* MenuItemSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemSection.swift; sourceTree = "<group>"; };
@@ -77,7 +81,9 @@
 				2CF067982B439AAA00DABA09 /* Info.plist */,
 				2CAE168F2B3F9673006E6372 /* MealbudApp.swift */,
 				2CAE16912B3F9673006E6372 /* MainEntry.swift */,
+				2C34AA9E2B4670E6001C4CE2 /* discard.swift */,
 				2CF067A12B43A28900DABA09 /* ItemView.swift */,
+				2C272CEE2B4680AF0064F539 /* SideRadio.swift */,
 				2C37A9132B41168E00ECF9A7 /* MenuItemSection.swift */,
 				2CF0679E2B439FD700DABA09 /* Restaurant */,
 				2C37A91B2B411F5000ECF9A7 /* MenuView.swift */,
@@ -199,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C37A9122B4114CC00ECF9A7 /* MenuOptionsList.swift in Sources */,
+				2C272CEF2B4680AF0064F539 /* SideRadio.swift in Sources */,
 				2C37A9142B41168E00ECF9A7 /* MenuItemSection.swift in Sources */,
 				2CAE16922B3F9673006E6372 /* MainEntry.swift in Sources */,
 				2C37A9162B4116F900ECF9A7 /* FoodItem.swift in Sources */,
@@ -208,6 +215,7 @@
 				2CE847142B3FBD5100CBAF9D /* CustomTabBar.swift in Sources */,
 				2CAE16902B3F9673006E6372 /* MealbudApp.swift in Sources */,
 				2C37A9102B4113F800ECF9A7 /* MenuBarOptions.swift in Sources */,
+				2C34AA9F2B4670E6001C4CE2 /* discard.swift in Sources */,
 				2C37A9202B41205800ECF9A7 /* OffsetModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

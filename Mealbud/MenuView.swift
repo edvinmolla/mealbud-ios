@@ -15,67 +15,67 @@ struct MenuView: View {
     
     var body: some View {
         
-        VStack {
-            HStack(spacing: 16) {
-                Button {
-                    presentationMode.wrappedValue.dismiss()
-                } label: {
-                    Image(systemName: "arrow.left")
-                        .font(.title2)
-                }
-                
-                Text("Miami - South Beach")
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                
-                Spacer()
-                
-                Button {
-                    
-                } label: {
-                    Image(systemName: "magnifyingglass")
-                        .font(.title2)
-                }
-            }
-            .padding(.horizontal)
-            .foregroundColor(.black)
+        NavigationView {
             
-            
-            
-            
-            // menu options bar
-            MenuOptionsList(sselectedOption: $selectedOption, currentOption: $currentOption)
-                .padding([.top, .horizontal])
-                .overlay(
-                    Divider()
-                        .padding(.horizontal, -16)
-                    , alignment: .bottom
-                    )
-            
-            ScrollViewReader {proxy in
-                
-                ScrollView(.vertical, showsIndicators: false) {
-                    
-                    VStack {
-                        ForEach(MenuBarOptions.allCases, id: \.self) { option in
-                            MenuItemSection(option: option, currentOption: $currentOption)
-                            
-                        }
+            VStack {
+                HStack(spacing: 16) {
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Image(systemName: "arrow.left")
+                            .font(.title2)
                     }
-                    .onChange(of: selectedOption, perform: { _ in
-                        withAnimation(.easeInOut) {
-                            proxy.scrollTo(selectedOption, anchor: .topTrailing)
-                        }
-                    })
-                    .padding(.horizontal)
-
+                    
+                    Text("Epic at Ackerman")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                    
+                    Spacer()
+                    
+                 
                 }
-                .coordinateSpace(name: "scroll")
-                	
+                .padding(.horizontal)
+                .foregroundColor(.black)
+                
+                
+                
+                
+                // menu options bar
+                MenuOptionsList(sselectedOption: $selectedOption, currentOption: $currentOption)
+                    .padding([.top, .horizontal])
+                    .overlay(
+                        Divider()
+                            .padding(.horizontal, -16)
+                        , alignment: .bottom
+                    )
+                
+                
+                ScrollViewReader {proxy in
+                    
+                    ScrollView(.vertical, showsIndicators: false) {
+                        
+                        VStack {
+                            ForEach(MenuBarOptions.allCases, id: \.self) { option in
+                                MenuItemSection(option: option, currentOption: $currentOption)
+                                
+                            }
+                        }
+                        .onChange(of: selectedOption, perform: { _ in
+                            withAnimation(.easeInOut) {
+                                proxy.scrollTo(selectedOption, anchor: .topTrailing)
+                            }
+                        })
+                        .padding(.horizontal)
+                        
+                    }
+                    .coordinateSpace(name: "scroll")
+                    
+                }
+                
             }
-        }
-        .navigationBarHidden(true)
-        .padding(.top, 20)
+            
+            .padding(.top, 20)
+        }.navigationBarHidden(true)
     }
     
 }
