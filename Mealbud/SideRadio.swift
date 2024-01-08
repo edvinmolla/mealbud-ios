@@ -13,7 +13,7 @@ struct SideRadio: View {
             VStack {
                 
                 HStack {
-                    Text("Select side")
+                    Text("Select Side")
                         .font(.custom("Uber Move Bold", size: 22))
                     Spacer()
                 }

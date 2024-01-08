@@ -10,6 +10,8 @@ import SwiftUI
 struct ItemView: View {
     @State private var buttonValue = false
     @Environment(\.presentationMode) var presentationMode
+    @State var showSheet: Bool = false
+    
     var body: some View {
         
         NavigationView {
@@ -39,7 +41,7 @@ struct ItemView: View {
                             
                             VStack {
                                 HStack {
-                                    Image(systemName: "xmark.circle.fill")
+                                    Image(systemName: "arrow.backward.circle.fill")
                                         .font(.system(size: 50))
                                         .foregroundColor(.white)
                                         .padding(.horizontal)
@@ -107,20 +109,28 @@ struct ItemView: View {
                 
                 Spacer()
                 
-                
-                Button(action: {
+                VStack {
+                    Button(action: {
+                        showSheet.toggle()
+                    }) {
+                        Text("Order Now")
+                            .frame(width: UIScreen.main.bounds.width * 0.81, height: 24)
+                            .padding()
+                            
+                            .background(Color.black)
+                            .foregroundColor(Color.white)
+                            .font(.custom("Uber Move Bold", size: 23))
+                            .cornerRadius(14)
+                    }
+                    .padding()
+                    .padding(.bottom, 18)
+                  
                     
-                }) {
-                    Text("Order Now")
-                        .frame(width: UIScreen.main.bounds.width * 0.75)
-                        .padding()
-                        .background(Color.black)
-                        .foregroundColor(Color.white)
-                        .font(.custom("Uber Move Bold", size: 23))
-                        .cornerRadius(14)
+                    .fullScreenCover(isPresented: $showSheet, content: {
+                        CheckOut()
+                    })
+                    
                 }
-                .padding()
-                .padding(.top, -10)
                 
                 
             }.ignoresSafeArea()

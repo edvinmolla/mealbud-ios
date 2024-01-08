@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainEntry: View {
-    
+    @State var showSheet: Bool = false
     @State var showingBottomSheet = false
     @State var ordered = true
    
@@ -26,7 +26,6 @@ struct MainEntry: View {
                     .font(.system(size: 20))
                     .padding(.horizontal, 15)
                     .padding(.top, 40)
-                    .padding(.bottom, 14)
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 14) {
@@ -38,29 +37,40 @@ struct MainEntry: View {
                                 Image("boba")
                                     .resizable()
                                     .scaledToFill()
-                                    .frame(width: 130, height: 130)
+                                    .frame(width: 100, height: 100)
                                     .background(Color.blue)
                                     .cornerRadius(14)
                                 
                                 VStack(alignment: .leading) {
                                     
-                                    Text("Bruin Fresh")
-                                        .minimumScaleFactor(0.5)
-                                        .fontWeight(.semibold)
-                                        .padding(.horizontal, 3)
+                                    HStack
+                                    {
+                                        Text("Bruin Fresh")
+                                            .minimumScaleFactor(0.5)
+                                            .font(.custom("Uber Move Bold", size: 14))
+                                            .padding(.horizontal, 3)
+                                        Spacer()
+                                        Text("$5")
+                                            .font(.custom("Uber Move Bold", size: 14))
+                                    }
+                                    
                                     
                                     HStack {
-                                        Text("Banans Strawberry")
-                                            .font(.system(size: 14))
+                                        Text("Banans Strawberryasdasd")
+                                            .font(.custom("Uber Move Medium", size: 10))
                                             .fontWeight(.regular)
                                         
                                         
-                                        Spacer()
-                                        Text("$5")
+                                       
                                     }
                                     .padding(.horizontal, 3)
                                 }
-                                .frame(maxWidth:130)
+                                .frame(maxWidth:100)
+                            }.fullScreenCover(isPresented: $showSheet, content: {
+                                CheckOut()
+                            })
+                            .onTapGesture {
+                                showSheet.toggle()
                             }
                             
                         }
@@ -77,7 +87,7 @@ struct MainEntry: View {
                 Text("Featured Restaurants")
                     .padding(.horizontal, 20)
                     .padding(.top, 15)
-                    .padding(.bottom, 15)
+                  
                     .fontWeight(.bold)
                     .font(.system(size: 20))
                 
@@ -97,7 +107,7 @@ struct MainEntry: View {
                             NavigationLink(destination: MenuView()) {
                                 
                                 RoundedRectangle(cornerRadius: 14)
-                                    .frame(width: geometry.size.width * 0.92, height: 180)
+                                    .frame(width: geometry.size.width * 0.92, height: 200)
                                     .foregroundColor(Color.red)
                                     .overlay(
                                         
@@ -409,8 +419,6 @@ struct BottomSheetView: View {
 
 
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainEntry()
+#Preview{
+    MainEntry()
     }
-}

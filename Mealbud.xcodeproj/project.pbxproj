@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C0DD6E12B4781400033C19C /* fullsheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DD6E02B4781400033C19C /* fullsheet.swift */; };
+		2C0DD6E32B47930F0033C19C /* CheckOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DD6E22B47930F0033C19C /* CheckOut.swift */; };
 		2C272CEF2B4680AF0064F539 /* SideRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C272CEE2B4680AF0064F539 /* SideRadio.swift */; };
-		2C34AA9F2B4670E6001C4CE2 /* discard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C34AA9E2B4670E6001C4CE2 /* discard.swift */; };
 		2C37A9102B4113F800ECF9A7 /* MenuBarOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C37A90F2B4113F800ECF9A7 /* MenuBarOptions.swift */; };
 		2C37A9122B4114CC00ECF9A7 /* MenuOptionsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C37A9112B4114CC00ECF9A7 /* MenuOptionsList.swift */; };
 		2C37A9142B41168E00ECF9A7 /* MenuItemSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C37A9132B41168E00ECF9A7 /* MenuItemSection.swift */; };
@@ -16,10 +17,28 @@
 		2C37A91C2B411F5000ECF9A7 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C37A91B2B411F5000ECF9A7 /* MenuView.swift */; };
 		2C37A91E2B41205000ECF9A7 /* OffsetKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C37A91D2B41205000ECF9A7 /* OffsetKey.swift */; };
 		2C37A9202B41205800ECF9A7 /* OffsetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C37A91F2B41205800ECF9A7 /* OffsetModifier.swift */; };
+		2CA94E5D2B46B42C0032F746 /* tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA94E5C2B46B42C0032F746 /* tutorial.swift */; };
 		2CAE16902B3F9673006E6372 /* MealbudApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE168F2B3F9673006E6372 /* MealbudApp.swift */; };
 		2CAE16922B3F9673006E6372 /* MainEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE16912B3F9673006E6372 /* MainEntry.swift */; };
 		2CAE16942B3F9674006E6372 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CAE16932B3F9674006E6372 /* Assets.xcassets */; };
 		2CAE16972B3F9674006E6372 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CAE16962B3F9674006E6372 /* Preview Assets.xcassets */; };
+		2CB797E92B47E10400462335 /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = 2CB797E82B47E10400462335 /* Stripe */; };
+		2CB797EB2B47E10400462335 /* StripeApplePay in Frameworks */ = {isa = PBXBuildFile; productRef = 2CB797EA2B47E10400462335 /* StripeApplePay */; };
+		2CB797ED2B47E10400462335 /* StripeCardScan in Frameworks */ = {isa = PBXBuildFile; productRef = 2CB797EC2B47E10400462335 /* StripeCardScan */; };
+		2CB797EF2B47E10400462335 /* StripeFinancialConnections in Frameworks */ = {isa = PBXBuildFile; productRef = 2CB797EE2B47E10400462335 /* StripeFinancialConnections */; };
+		2CB797F12B47E10400462335 /* StripeIdentity in Frameworks */ = {isa = PBXBuildFile; productRef = 2CB797F02B47E10400462335 /* StripeIdentity */; };
+		2CB797F32B47E10400462335 /* StripePaymentSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 2CB797F22B47E10400462335 /* StripePaymentSheet */; };
+		2CB797F52B47E10400462335 /* StripePayments in Frameworks */ = {isa = PBXBuildFile; productRef = 2CB797F42B47E10400462335 /* StripePayments */; };
+		2CB797F72B47E10400462335 /* StripePaymentsUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2CB797F62B47E10400462335 /* StripePaymentsUI */; };
+		2CB797F92B47E43600462335 /* ApplePay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB797F82B47E43600462335 /* ApplePay.swift */; };
+		2CB797FB2B47E53C00462335 /* BackendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB797FA2B47E53C00462335 /* BackendModel.swift */; };
+		2CB797FD2B47E55D00462335 /* ApplePayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB797FC2B47E55D00462335 /* ApplePayModel.swift */; };
+		2CB797FF2B47E57000462335 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB797FE2B47E57000462335 /* ModelData.swift */; };
+		2CB798012B47E58100462335 /* PaymentMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB798002B47E58100462335 /* PaymentMethods.swift */; };
+		2CB798052B47EB9900462335 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB798042B47EB9900462335 /* ContentView.swift */; };
+		2CB798092B47EBBA00462335 /* PaymentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB798082B47EBBA00462335 /* PaymentButton.swift */; };
+		2CB7980B2B47EBCC00462335 /* PaymentMethodList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB7980A2B47EBCC00462335 /* PaymentMethodList.swift */; };
+		2CB7980D2B47EBDB00462335 /* PaymentMethodRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB7980C2B47EBDB00462335 /* PaymentMethodRow.swift */; };
 		2CE847142B3FBD5100CBAF9D /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE847132B3FBD5100CBAF9D /* CustomTabBar.swift */; };
 		2CF0679B2B439DE400DABA09 /* Uber Move Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2CF0679A2B439DE400DABA09 /* Uber Move Medium.otf */; };
 		2CF0679D2B439ED500DABA09 /* Uber Move Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2CF0679C2B439ED500DABA09 /* Uber Move Bold.otf */; };
@@ -27,8 +46,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C0DD6E02B4781400033C19C /* fullsheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fullsheet.swift; sourceTree = "<group>"; };
+		2C0DD6E22B47930F0033C19C /* CheckOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOut.swift; sourceTree = "<group>"; };
 		2C272CEE2B4680AF0064F539 /* SideRadio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideRadio.swift; sourceTree = "<group>"; };
-		2C34AA9E2B4670E6001C4CE2 /* discard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = discard.swift; sourceTree = "<group>"; };
 		2C37A90F2B4113F800ECF9A7 /* MenuBarOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarOptions.swift; sourceTree = "<group>"; };
 		2C37A9112B4114CC00ECF9A7 /* MenuOptionsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOptionsList.swift; sourceTree = "<group>"; };
 		2C37A9132B41168E00ECF9A7 /* MenuItemSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemSection.swift; sourceTree = "<group>"; };
@@ -36,11 +56,22 @@
 		2C37A91B2B411F5000ECF9A7 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		2C37A91D2B41205000ECF9A7 /* OffsetKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetKey.swift; sourceTree = "<group>"; };
 		2C37A91F2B41205800ECF9A7 /* OffsetModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetModifier.swift; sourceTree = "<group>"; };
+		2CA94E5C2B46B42C0032F746 /* tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tutorial.swift; sourceTree = "<group>"; };
 		2CAE168C2B3F9673006E6372 /* Mealbud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mealbud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CAE168F2B3F9673006E6372 /* MealbudApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealbudApp.swift; sourceTree = "<group>"; };
 		2CAE16912B3F9673006E6372 /* MainEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEntry.swift; sourceTree = "<group>"; };
 		2CAE16932B3F9674006E6372 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CAE16962B3F9674006E6372 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2CB797E42B47DFAE00462335 /* Mealbud.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mealbud.entitlements; sourceTree = "<group>"; };
+		2CB797F82B47E43600462335 /* ApplePay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePay.swift; sourceTree = "<group>"; };
+		2CB797FA2B47E53C00462335 /* BackendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendModel.swift; sourceTree = "<group>"; };
+		2CB797FC2B47E55D00462335 /* ApplePayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayModel.swift; sourceTree = "<group>"; };
+		2CB797FE2B47E57000462335 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		2CB798002B47E58100462335 /* PaymentMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethods.swift; sourceTree = "<group>"; };
+		2CB798042B47EB9900462335 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2CB798082B47EBBA00462335 /* PaymentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentButton.swift; sourceTree = "<group>"; };
+		2CB7980A2B47EBCC00462335 /* PaymentMethodList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodList.swift; sourceTree = "<group>"; };
+		2CB7980C2B47EBDB00462335 /* PaymentMethodRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodRow.swift; sourceTree = "<group>"; };
 		2CE847132B3FBD5100CBAF9D /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		2CF067982B439AAA00DABA09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2CF0679A2B439DE400DABA09 /* Uber Move Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Uber Move Medium.otf"; sourceTree = "<group>"; };
@@ -53,6 +84,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CB797ED2B47E10400462335 /* StripeCardScan in Frameworks */,
+				2CB797EF2B47E10400462335 /* StripeFinancialConnections in Frameworks */,
+				2CB797F12B47E10400462335 /* StripeIdentity in Frameworks */,
+				2CB797E92B47E10400462335 /* Stripe in Frameworks */,
+				2CB797F32B47E10400462335 /* StripePaymentSheet in Frameworks */,
+				2CB797F52B47E10400462335 /* StripePayments in Frameworks */,
+				2CB797F72B47E10400462335 /* StripePaymentsUI in Frameworks */,
+				2CB797EB2B47E10400462335 /* StripeApplePay in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,11 +117,17 @@
 		2CAE168E2B3F9673006E6372 /* Mealbud */ = {
 			isa = PBXGroup;
 			children = (
+				2CB797E42B47DFAE00462335 /* Mealbud.entitlements */,
 				2CF067982B439AAA00DABA09 /* Info.plist */,
 				2CAE168F2B3F9673006E6372 /* MealbudApp.swift */,
 				2CAE16912B3F9673006E6372 /* MainEntry.swift */,
-				2C34AA9E2B4670E6001C4CE2 /* discard.swift */,
+				2CA94E5C2B46B42C0032F746 /* tutorial.swift */,
+				2C0DD6E02B4781400033C19C /* fullsheet.swift */,
+				2C0DD6E22B47930F0033C19C /* CheckOut.swift */,
 				2CF067A12B43A28900DABA09 /* ItemView.swift */,
+				2CB798032B47EB7A00462335 /* HelperViews */,
+				2CB798022B47EB6200462335 /* Model */,
+				2CB797F82B47E43600462335 /* ApplePay.swift */,
 				2C272CEE2B4680AF0064F539 /* SideRadio.swift */,
 				2C37A9132B41168E00ECF9A7 /* MenuItemSection.swift */,
 				2CF0679E2B439FD700DABA09 /* Restaurant */,
@@ -107,6 +152,28 @@
 				2CAE16962B3F9674006E6372 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2CB798022B47EB6200462335 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2CB797FA2B47E53C00462335 /* BackendModel.swift */,
+				2CB797FC2B47E55D00462335 /* ApplePayModel.swift */,
+				2CB798002B47E58100462335 /* PaymentMethods.swift */,
+				2CB797FE2B47E57000462335 /* ModelData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2CB798032B47EB7A00462335 /* HelperViews */ = {
+			isa = PBXGroup;
+			children = (
+				2CB798042B47EB9900462335 /* ContentView.swift */,
+				2CB7980A2B47EBCC00462335 /* PaymentMethodList.swift */,
+				2CB7980C2B47EBDB00462335 /* PaymentMethodRow.swift */,
+				2CB798082B47EBBA00462335 /* PaymentButton.swift */,
+			);
+			path = HelperViews;
 			sourceTree = "<group>";
 		};
 		2CF067992B439DAD00DABA09 /* Fonts */ = {
@@ -148,6 +215,16 @@
 			dependencies = (
 			);
 			name = Mealbud;
+			packageProductDependencies = (
+				2CB797E82B47E10400462335 /* Stripe */,
+				2CB797EA2B47E10400462335 /* StripeApplePay */,
+				2CB797EC2B47E10400462335 /* StripeCardScan */,
+				2CB797EE2B47E10400462335 /* StripeFinancialConnections */,
+				2CB797F02B47E10400462335 /* StripeIdentity */,
+				2CB797F22B47E10400462335 /* StripePaymentSheet */,
+				2CB797F42B47E10400462335 /* StripePayments */,
+				2CB797F62B47E10400462335 /* StripePaymentsUI */,
+			);
 			productName = Mealbud;
 			productReference = 2CAE168C2B3F9673006E6372 /* Mealbud.app */;
 			productType = "com.apple.product-type.application";
@@ -176,6 +253,9 @@
 				Base,
 			);
 			mainGroup = 2CAE16832B3F9673006E6372;
+			packageReferences = (
+				2CB797E72B47E10400462335 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */,
+			);
 			productRefGroup = 2CAE168D2B3F9673006E6372 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -204,19 +284,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CB7980D2B47EBDB00462335 /* PaymentMethodRow.swift in Sources */,
 				2C37A9122B4114CC00ECF9A7 /* MenuOptionsList.swift in Sources */,
 				2C272CEF2B4680AF0064F539 /* SideRadio.swift in Sources */,
+				2CB798092B47EBBA00462335 /* PaymentButton.swift in Sources */,
+				2CB798052B47EB9900462335 /* ContentView.swift in Sources */,
+				2CB797FF2B47E57000462335 /* ModelData.swift in Sources */,
 				2C37A9142B41168E00ECF9A7 /* MenuItemSection.swift in Sources */,
 				2CAE16922B3F9673006E6372 /* MainEntry.swift in Sources */,
+				2CB798012B47E58100462335 /* PaymentMethods.swift in Sources */,
 				2C37A9162B4116F900ECF9A7 /* FoodItem.swift in Sources */,
+				2CB797F92B47E43600462335 /* ApplePay.swift in Sources */,
 				2C37A91C2B411F5000ECF9A7 /* MenuView.swift in Sources */,
 				2CF067A22B43A28900DABA09 /* ItemView.swift in Sources */,
 				2C37A91E2B41205000ECF9A7 /* OffsetKey.swift in Sources */,
 				2CE847142B3FBD5100CBAF9D /* CustomTabBar.swift in Sources */,
+				2CA94E5D2B46B42C0032F746 /* tutorial.swift in Sources */,
 				2CAE16902B3F9673006E6372 /* MealbudApp.swift in Sources */,
+				2C0DD6E12B4781400033C19C /* fullsheet.swift in Sources */,
 				2C37A9102B4113F800ECF9A7 /* MenuBarOptions.swift in Sources */,
-				2C34AA9F2B4670E6001C4CE2 /* discard.swift in Sources */,
+				2CB7980B2B47EBCC00462335 /* PaymentMethodList.swift in Sources */,
+				2C0DD6E32B47930F0033C19C /* CheckOut.swift in Sources */,
 				2C37A9202B41205800ECF9A7 /* OffsetModifier.swift in Sources */,
+				2CB797FB2B47E53C00462335 /* BackendModel.swift in Sources */,
+				2CB797FD2B47E55D00462335 /* ApplePayModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,7 +366,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -332,7 +423,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -347,6 +438,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Mealbud/Mealbud.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Mealbud/Preview Content\"";
@@ -354,6 +446,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mealbud/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Mealbud;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app does not use camera.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -364,12 +459,15 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.campus.Mealbud;
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mealbud.stable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -378,6 +476,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Mealbud/Mealbud.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Mealbud/Preview Content\"";
@@ -385,6 +484,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mealbud/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Mealbud;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app does not use camera.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -395,12 +497,15 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.campus.Mealbud;
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mealbud.stable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -426,6 +531,60 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2CB797E72B47E10400462335 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stripe/stripe-ios-spm";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 23.20.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2CB797E82B47E10400462335 /* Stripe */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2CB797E72B47E10400462335 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = Stripe;
+		};
+		2CB797EA2B47E10400462335 /* StripeApplePay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2CB797E72B47E10400462335 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = StripeApplePay;
+		};
+		2CB797EC2B47E10400462335 /* StripeCardScan */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2CB797E72B47E10400462335 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = StripeCardScan;
+		};
+		2CB797EE2B47E10400462335 /* StripeFinancialConnections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2CB797E72B47E10400462335 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = StripeFinancialConnections;
+		};
+		2CB797F02B47E10400462335 /* StripeIdentity */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2CB797E72B47E10400462335 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = StripeIdentity;
+		};
+		2CB797F22B47E10400462335 /* StripePaymentSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2CB797E72B47E10400462335 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = StripePaymentSheet;
+		};
+		2CB797F42B47E10400462335 /* StripePayments */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2CB797E72B47E10400462335 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = StripePayments;
+		};
+		2CB797F62B47E10400462335 /* StripePaymentsUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2CB797E72B47E10400462335 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = StripePaymentsUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2CAE16842B3F9673006E6372 /* Project object */;
 }

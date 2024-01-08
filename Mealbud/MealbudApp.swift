@@ -1,17 +1,48 @@
 //
-//  MealbudApp.swift
-//  Mealbud
+//  AcceptAPaymentApp.swift
+//  AcceptAPayment
 //
-//  Created by Edvin Molla on 12/29/23.
+//  Created by Thorsten Schaeff on 2/1/21.
 //
 
 import SwiftUI
+import Stripe
+
+let BackendUrl = "https://mealbud.us/"
 
 @main
-struct MealbudApp: App {
+struct AcceptAPaymentApp: App {
+    init() {
+        let url = URL(string: BackendUrl + "config")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+            guard let response = response as? HTTPURLResponse,
+                response.statusCode == 200,
+                let data = data,
+                let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String : Any],
+                let publishableKey = json["publishableKey"] as? String else {
+                print("Failed to retrieve publishableKey from /config")
+                return
+            }
+            print("Fetched publishable key \(publishableKey)")
+            StripeAPI.defaultPublishableKey = publishableKey
+        })
+        task.resume()
+    }
+    
     var body: some Scene {
         WindowGroup {
             MainEntry()
+                .onOpenURL { url in
+                    // This method handles opening custom URL schemes (e.g., "your-app://")
+                    print(url)
+                    let stripeHandled = StripeAPI.handleURLCallback(with: url)
+                    if (!stripeHandled) {
+                        // This was not a Stripe url – handle the URL normally as you would
+                    }
+                }
         }
     }
 }
