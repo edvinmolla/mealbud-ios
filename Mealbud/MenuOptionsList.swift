@@ -57,5 +57,5 @@ struct MenuOptionsList: View {
 }
 
 #Preview {
-    MenuOptionsList(sselectedOption: .constant(.japanese), currentOption: .constant(.japanese))
+    MenuOptionsList(sselectedOption: .constant(.neapolitanPizzas), currentOption: .constant(.neapolitanPizzas))
 }

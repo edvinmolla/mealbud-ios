@@ -16,11 +16,12 @@ struct FoodItem: Identifiable {
     
 }
 
-var japaneseFood: [FoodItem] = [
+var neapolitanPizzasItems: [FoodItem] = [
     
-    .init(title: "Sushi", description: "amazing", price: "$23", imageName: "fettucine"),
-    .init(title: "Sushi", description: "amazing", price: "$23", imageName: "fettucine"),
-    .init(title: "Sushi", description: "amazing", price: "$23", imageName: "fettucine")
+    .init(title: "Margherita Pizza", description: "Mozzarella, pomodoro, basil", price: "$9.95", imageName: "margherittapizza"),
+    .init(title: "Pepperoni Pizza", description: "Pepperoni, red onions, mozzarella, pomodoro", price: "$10.95", imageName: "pepperonipizza"),
+    .init(title: "Pizza Bianca", description: "Garlic, ricotta, mozzarella, Parmesan, dry oregano, thyme, red pepper flakes", price: "$10.95", imageName: "pizzabianca"),
+    .init(title: "Tre Funghi Pizza", description: "Portobello mushrooms, crimini mushrooms, oyster mushrooms, mozzarella, goat cheese", price: "$10.95", imageName: "trefunghi")
 
 ]
 

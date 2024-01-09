@@ -17,7 +17,7 @@ class ApplePayModel : NSObject, ObservableObject, STPApplePayContextDelegate {
     func pay(clientSecret: String?) {
         self.clientSecret = clientSecret
         // Configure a payment request
-        let pr = StripeAPI.paymentRequest(withMerchantIdentifier: "merchant.com.stripe-samples.accept-a-payment", country: "US", currency: "USD")
+        let pr = StripeAPI.paymentRequest(withMerchantIdentifier: "merchant.mealbud.stable", country: "US", currency: "USD")
 
         // You'd generally want to configure at least `.postalAddress` here.
         // We don't require anything here, as we don't want to enter an address

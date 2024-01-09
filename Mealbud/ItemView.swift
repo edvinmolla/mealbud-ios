@@ -12,6 +12,11 @@ struct ItemView: View {
     @Environment(\.presentationMode) var presentationMode
     @State var showSheet: Bool = false
     
+    var itemName: String
+    var itemDescription: String
+    var itemPrice: String
+    var itemImage: String
+    
     var body: some View {
         
         NavigationView {
@@ -25,7 +30,7 @@ struct ItemView: View {
                     .foregroundColor(Color.red)
                     .overlay(
                         ZStack {
-                            Image("italiansandwich")
+                            Image(itemImage)
                                 .resizable()
                             
                             LinearGradient(
@@ -58,7 +63,7 @@ struct ItemView: View {
                                 HStack {
                                     VStack {
                                         HStack {
-                                            Text("Italian Sandwich")
+                                            Text(itemName)
                                                 .font(.custom("Uber Move Bold", size: 26))
                                                 .foregroundColor(.white)
                                                 .padding(.horizontal)
@@ -74,7 +79,7 @@ struct ItemView: View {
                                     }
                                     
                                     VStack {
-                                        Text("$9.75")
+                                        Text(itemPrice)
                                             .font(.custom("Uber Move Bold", size: 34))
                                             .foregroundColor(.white)
                                             .padding(.horizontal)
@@ -87,10 +92,27 @@ struct ItemView: View {
                 
                 
                 VStack {
-                    Text("allergies enum list")
+                    HStack{
+                        Text(itemDescription)
+                            .font(.custom("Uber Move Medium", size: 15))
+                            .padding(.horizontal)
+                        Spacer()
+                    }
+                    .padding(.top, 10)
+                    .padding(.bottom, 2)
+                    
+                    HStack{
+                        Text("Visit UCLA dining website for allergen warnings.")
+                            .font(.custom("Uber Move Medium", size: 10))
+                            .padding(.horizontal)
+                        
+                        Spacer()
+                    }
+                    .padding(.bottom,10)
+                   
+                        
                 }
-                
-                
+           
                 
                 
                 ScrollView(.vertical, showsIndicators: false) {
@@ -99,10 +121,11 @@ struct ItemView: View {
                         .fill(Color.gray.opacity(0.2))
                         .frame(height: 8)
                         .edgesIgnoringSafeArea(.horizontal)
-                        .padding(.top, 20)
+                 
                     
                     SideRadio()
-                        .padding(.top)
+                        .padding(.vertical)
+                    
                     
                 }
                 
@@ -134,7 +157,7 @@ struct ItemView: View {
                 
                 
             }.ignoresSafeArea()
-                .navigationBarBackButtonHidden(true)
+            .navigationBarBackButtonHidden(true)
             
         }
         .navigationBarHidden(true)
@@ -146,7 +169,7 @@ struct ItemView: View {
 
 
 #Preview {
-    ItemView()
+    ItemView(itemName: "Sandwich", itemDescription: "Portobello mushrooms, crimini mushrooms, oyster mushrooms, mozzarella, goat cheese", itemPrice: "$10.24", itemImage: "fettucine")
 }
 
 

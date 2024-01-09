@@ -10,8 +10,8 @@ import SwiftUI
 struct MenuView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @State private var selectedOption: MenuBarOptions = .japanese
-    @State private var currentOption: MenuBarOptions = .japanese
+    @State private var selectedOption: MenuBarOptions = .neapolitanPizzas
+    @State private var currentOption: MenuBarOptions = .neapolitanPizzas
     
     var body: some View {
         

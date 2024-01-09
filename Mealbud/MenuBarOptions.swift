@@ -8,7 +8,7 @@
 import Foundation
 
 enum MenuBarOptions: Int, CaseIterable {
-    case japanese
+    case neapolitanPizzas
     case american
     case italian
     case salads
@@ -16,7 +16,7 @@ enum MenuBarOptions: Int, CaseIterable {
     
     var title: String {
         switch self {
-        case .japanese: return "Japanese"
+        case .neapolitanPizzas: return "Neapolitan Pizzas"
         case .american: return "American"
         case .italian: return "Italian"
         case .salads: return "Salads"
@@ -26,8 +26,8 @@ enum MenuBarOptions: Int, CaseIterable {
     
     var foodItems: [FoodItem] {
         switch self {
-        case .japanese:
-            return japaneseFood
+        case .neapolitanPizzas:
+            return neapolitanPizzasItems
         case .american:
             return saladItems
         case .italian:

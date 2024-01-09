@@ -33,7 +33,7 @@ struct SideRadio: View {
                         } else {
                             Circle()
                                 .stroke(Color.black, lineWidth: 2)
-                                .frame(width: 24, height: 24)
+                                .frame(width: 23, height: 23)
                             
                         }
                     }
@@ -74,7 +74,7 @@ struct SideRadio: View {
                         } else {
                             Circle()
                                 .stroke(Color.black, lineWidth: 2)
-                                .frame(width: 24, height: 24)
+                                .frame(width: 23, height: 23)
                             
                         }
                     }

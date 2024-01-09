@@ -26,7 +26,7 @@ struct MenuItemSection: View {
                 
                 ForEach(option.foodItems) { foodItem in
                     
-                    NavigationLink(destination: ItemView()) {
+                    NavigationLink(destination: ItemView(itemName: foodItem.title, itemDescription: foodItem.description, itemPrice: foodItem.price, itemImage: foodItem.imageName)) {
                         
                         HStack(spacing: 16) {
                             
@@ -71,5 +71,5 @@ struct MenuItemSection: View {
 
 
 #Preview {
-    MenuItemSection(option: .american, currentOption: .constant(.american))
+    MenuItemSection(option: .neapolitanPizzas, currentOption: .constant(.neapolitanPizzas))
 }
