@@ -16,6 +16,12 @@ struct CheckOut: View {
     @ObservedObject var backendModel = BackendModel()
     @StateObject var applePayModel = ApplePayModel()
     
+    var itemName: String
+    var itemPrice: String
+    var itemDescription: String
+    var itemImage: String
+    var selectedSide: String
+    var selectedDrink: String
     
     var body: some View {
         
@@ -41,8 +47,8 @@ struct CheckOut: View {
                     Form {
                         Section(header: Text("Deliver to"))
                         {
-                            TextField("location", text: $location)
-                            TextField("phone number", text: $phone)
+                            TextField("Office/Delivery location", text: $location)
+                            TextField("Phone number", text: $phone)
                         }
                         
                         
@@ -50,7 +56,7 @@ struct CheckOut: View {
                         {
                             
                             HStack {
-                                Image("greeksalad")
+                                Image(itemImage)
                                     .resizable()
                                     .scaledToFill()
                                     .frame(width: 60, height: 60)
@@ -60,12 +66,12 @@ struct CheckOut: View {
                                 VStack{
                                     
                                     HStack{
-                                        Text("Greek Salad")
+                                        Text(itemName)
                                             .font(.custom("Uber Move Bold", size: 16))
                                         Spacer()
                                     }
                                     HStack{
-                                        Text("description, asd sa,dads ")
+                                        Text(itemDescription)
                                             .font(.custom("Uber Move Medium", size: 12))
                                         Spacer()
                                     }
@@ -85,13 +91,14 @@ struct CheckOut: View {
                         }
                         
                         Section {
-                            VStack{
+                            VStack(spacing: 10){
                                 HStack{
                                     Text("Subtotal")
                                     Spacer()
-                                    Text("$24")
+                                    Text(itemPrice)
                                 }
                                 .padding(.vertical,2)
+                                .padding(.top, 8)
                                 HStack{
                                     Text("Delivery")
                                     Spacer()
@@ -113,6 +120,7 @@ struct CheckOut: View {
                                     Spacer()
                                     Text("$24")
                                 }
+                                .padding(.bottom, 8)
                                 .font(.custom("Uber Move Bold", size: 16))
                             }
                             .font(.custom("Uber Move Medium", size: 16))
@@ -192,6 +200,6 @@ struct CheckOut: View {
     }
 }
 
-#Preview {
-    CheckOut()
-}
+//#Preview {
+//    CheckOut()
+//}

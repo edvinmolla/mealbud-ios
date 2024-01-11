@@ -11,7 +11,10 @@ struct MainEntry: View {
     @State var showSheet: Bool = false
     @State var showingBottomSheet = false
     @State var ordered = true
-   
+    
+    let drinkOption: MenuDrinkOptions
+    
+    
     var body: some View {
         
         
@@ -21,7 +24,7 @@ struct MainEntry: View {
                 
                
                 
-                Text("Delicious Delights")
+                Text("Best Value")
                     .fontWeight(.bold)
                     .font(.system(size: 20))
                     .padding(.horizontal, 15)
@@ -29,12 +32,11 @@ struct MainEntry: View {
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 14) {
-                        ForEach(0..<10) { index in
-                            
+                        ForEach(drinkOption.drinkItems) { item in
                             
                             VStack {
                                 
-                                Image("boba")
+                                Image(item.imageName)
                                     .resizable()
                                     .scaledToFill()
                                     .frame(width: 100, height: 100)
@@ -45,18 +47,18 @@ struct MainEntry: View {
                                     
                                     HStack
                                     {
-                                        Text("Bruin Fresh")
-                                            .minimumScaleFactor(0.5)
+                                        Text(item.title)
+                                    
                                             .font(.custom("Uber Move Bold", size: 14))
                                             .padding(.horizontal, 3)
                                         Spacer()
-                                        Text("$5")
-                                            .font(.custom("Uber Move Bold", size: 14))
+                                             Text(item.price)
+                                            .font(.custom("Uber Move Bold", size: 12))
                                     }
                                     
                                     
                                     HStack {
-                                        Text("Banans Strawberryasdasd")
+                                            Text(item.description)
                                             .font(.custom("Uber Move Medium", size: 10))
                                             .fontWeight(.regular)
                                         
@@ -67,7 +69,7 @@ struct MainEntry: View {
                                 }
                                 .frame(maxWidth:100)
                             }.fullScreenCover(isPresented: $showSheet, content: {
-                                CheckOut()
+                                            CheckOut(itemName: item.title, itemPrice: item.price, itemDescription: item.description, itemImage: item.imageName, selectedSide: "", selectedDrink: "")
                             })
                             .onTapGesture {
                                 showSheet.toggle()
@@ -420,5 +422,5 @@ struct BottomSheetView: View {
 
 
 #Preview{
-    MainEntry()
+    MainEntry(drinkOption: .drinks)
     }

@@ -16,6 +16,7 @@ struct FoodItem: Identifiable {
     
 }
 
+
 var neapolitanPizzasItems: [FoodItem] = [
     
     .init(title: "Margherita Pizza", description: "Mozzarella, pomodoro, basil", price: "$9.95", imageName: "margherittapizza"),

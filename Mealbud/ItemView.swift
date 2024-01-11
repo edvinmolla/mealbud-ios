@@ -32,6 +32,11 @@ struct ItemView: View {
                         ZStack {
                             Image(itemImage)
                                 .resizable()
+                                .scaledToFill()
+                                .frame(height: UIScreen.main.bounds.height * 0.24)
+                                .clipped()
+                
+                                
                             
                             LinearGradient(
                                 gradient: Gradient(
@@ -56,7 +61,7 @@ struct ItemView: View {
                                     
                                     Spacer()
                                 }
-                                .padding(.top, 60)
+                                .padding(.top, 40)
                                 
                                 
                                 Spacer()
@@ -150,7 +155,7 @@ struct ItemView: View {
                   
                     
                     .fullScreenCover(isPresented: $showSheet, content: {
-                        CheckOut()
+                        CheckOut(itemName: itemName, itemPrice: itemPrice, itemDescription: itemDescription, itemImage: itemImage, selectedSide: "", selectedDrink: "")
                     })
                     
                 }
@@ -169,7 +174,7 @@ struct ItemView: View {
 
 
 #Preview {
-    ItemView(itemName: "Sandwich", itemDescription: "Portobello mushrooms, crimini mushrooms, oyster mushrooms, mozzarella, goat cheese", itemPrice: "$10.24", itemImage: "fettucine")
+    ItemView(itemName: "Sandwich",  itemDescription: "Portobello mushrooms, crimini mushrooms, oyster mushrooms, mozzarella, goat cheese",itemPrice: "$10.24", itemImage: "fettucine")
 }
 
 

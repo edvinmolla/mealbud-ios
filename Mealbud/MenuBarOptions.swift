@@ -7,12 +7,14 @@
 
 import Foundation
 
+
+
 enum MenuBarOptions: Int, CaseIterable {
     case neapolitanPizzas
     case american
     case italian
     case salads
-    case fancy
+//    case fancy
     
     var title: String {
         switch self {
@@ -20,7 +22,7 @@ enum MenuBarOptions: Int, CaseIterable {
         case .american: return "American"
         case .italian: return "Italian"
         case .salads: return "Salads"
-        case .fancy: return "Fancy"
+//        case .fancy: return "Fancy"
         }
     }
     
@@ -34,8 +36,8 @@ enum MenuBarOptions: Int, CaseIterable {
             return italianFood
         case .salads:
             return saladItems
-        case .fancy:
-            return italianFood
+//        case .fancy:
+//            return italianFood
         }
     }
 }

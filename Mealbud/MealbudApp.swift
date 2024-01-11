@@ -34,7 +34,7 @@ struct AcceptAPaymentApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainEntry()
+            MainEntry(drinkOption: .drinks)
                 .onOpenURL { url in
                     // This method handles opening custom URL schemes (e.g., "your-app://")
                     print(url)
