@@ -8,10 +8,13 @@
 import Foundation
 import Stripe
 import PassKit
+import SwiftUI
 
 class ApplePayModel : NSObject, ObservableObject, STPApplePayContextDelegate {
     @Published var paymentStatus: STPPaymentStatus?
     @Published var lastPaymentError: Error?
+    @AppStorage("applePayPrice") var applePayPrice = ""
+    
     var clientSecret: String?
 
     func pay(clientSecret: String?) {
@@ -36,7 +39,7 @@ class ApplePayModel : NSObject, ObservableObject, STPApplePayContextDelegate {
         // Build payment summary items
         // (You'll generally want to configure these based on the selected address and shipping method.
         pr.paymentSummaryItems = [
-            PKPaymentSummaryItem(label: "A very nice computer", amount: NSDecimalNumber(string: "59.99")),
+            PKPaymentSummaryItem(label: "Mealbud Delivery", amount: NSDecimalNumber(string: applePayPrice)),
         ]
 
         // Present the Apple Pay Context:

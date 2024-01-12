@@ -105,7 +105,7 @@ struct MainEntry: View {
                                             
                                             LinearGradient(
                                                 gradient: Gradient(
-                                                    colors: [Color.black.opacity(0.9), Color.black.opacity(0.3)]),
+                                                    colors: [Color.black.opacity(1), Color.black.opacity(0.5)]),
                                                 startPoint: .bottom,
                                                 endPoint: .top
                                             )
@@ -196,6 +196,132 @@ struct MainEntry: View {
     
     
     
+    
+    
+}
+
+
+struct BottomSheetView: View {
+    var body: some View {
+        
+        
+        
+        
+        
+        ZStack {
+            
+            
+            VStack {
+                HStack {
+                    Text("Estimated delivery")
+                        .fontWeight(.semibold)
+                        .font(.subheadline)
+                        .padding(.horizontal, 30)
+                    
+                    Spacer()
+                    
+                }
+                
+                HStack {
+                    
+                    HStack {
+                        Text("8:33am – 8: 55am")
+                        
+                            .fontWeight(.light)
+                            .font(.title)
+                            .padding(.horizontal, 14)
+                        
+                        
+                        
+                        Spacer()
+                        
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "message")
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                                .padding(.horizontal, 15)
+                                .foregroundColor(.black)
+                        }
+                        
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "phone")
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                                .foregroundColor(.black)
+                            
+                        }
+                    }
+                    .padding()
+                    
+                    
+                    
+                }
+                .frame(maxWidth:.infinity)
+                .background(Color.gray.opacity(0.1))
+                
+                //
+                
+                
+                
+                HStack {
+                    
+                    HStack {
+                        Image("fettucine")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 50, height: 50)
+                            .background(Color.blue)
+                            .cornerRadius(14)
+                        
+                        VStack {
+                            HStack {
+                                Text("Fettucine Alfredo w/ Chicken")
+                                    .font(.subheadline)
+                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                
+                                Spacer()
+                            }
+                            
+                            HStack {
+                                Text("Total: $12.65")
+                                    .font(.footnote)
+                                Spacer()
+                            }
+                            
+                        }
+                        
+                        Spacer()
+                    }
+                    .padding(.top, 10)
+                    .padding(.horizontal, 30)
+                }
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }
     
     
 }

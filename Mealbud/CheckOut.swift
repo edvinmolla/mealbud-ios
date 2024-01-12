@@ -22,6 +22,7 @@ struct CheckOut: View {
     var itemImage: String
     @AppStorage("selectedSide") var selectedSide = ""
     @AppStorage("selectedDrink") var selectedDrink = ""
+    @AppStorage("applePayPrice") var applePayPrice = ""
     
     
     var body: some View {
@@ -147,11 +148,12 @@ struct CheckOut: View {
                     
                     .frame(width: UIScreen.main.bounds.width)
                     
-                    
+                   
                     VStack {
                         if backendModel.paymentIntentParams != nil {
                             
                             PaymentButton() {
+                                applePayPrice = String(format: "%.2f", total)
                                 applePayModel.pay(clientSecret: backendModel.paymentIntentParams?.clientSecret)
                                 
                             }
