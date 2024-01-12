@@ -4,18 +4,21 @@ struct SideRadio: View {
     var foodSide = ["Oatmeal Raisin", "Chocolate Chip", "Banana", "Apple", "Orange"]
     var drinkSide = ["Coke", "Diet Coke", "Dr Pepper", "Fanta", "Diet Fanta"]
     
-    @State private var selectedSide: String = ""
-    @State private var selectedDrink: String = ""
+    @AppStorage("selectedSide") var selectedSide = ""
+    @AppStorage("selectedDrink") var selectedDrink = ""
+    
     
     var body: some View {
         VStack(spacing: 14) {
             
             VStack {
-                
+            
                 HStack {
                     Text("Select Side")
                         .font(.custom("Uber Move Bold", size: 22))
                     Spacer()
+                    Text("$1.25")
+                        .font(.custom("Uber Move Bold", size: 20))
                 }
                 .padding(.vertical, 6)
                 
@@ -23,6 +26,7 @@ struct SideRadio: View {
                     HStack {
                         Text(option)
                             .font(.custom("Uber Move Medium", size: 18))
+                        
                         
                         Spacer()
                         
@@ -37,13 +41,21 @@ struct SideRadio: View {
                             
                         }
                     }
+                   
                     .foregroundColor(.black)
                     .onTapGesture {
-                        selectedSide = option
-                    }
+                                            if selectedSide == option {
+                                                selectedSide = "" // Unselect if already selected
+                                            } else {
+                                                selectedSide = option
+                                            }
+                                        }
+                    Divider()
+                        .padding(.bottom, 5)
                 }
             }
             .padding(.horizontal, 20)
+            
             
             Rectangle()
                 .fill(Color.gray.opacity(0.2))
@@ -52,11 +64,13 @@ struct SideRadio: View {
                 .padding(.top, 20)
             
             VStack {
-                
                 HStack {
                     Text("Select Drink")
                         .font(.custom("Uber Move Bold", size: 22))
                     Spacer()
+                    
+                    Text("Free")
+                        .font(.custom("Uber Move Bold", size: 20))
                 }
                 .padding(.vertical, 6)
                 
@@ -80,8 +94,14 @@ struct SideRadio: View {
                     }
                     .foregroundColor(.black)
                     .onTapGesture {
-                        selectedDrink = option
-                    }
+                                            if selectedDrink == option {
+                                                selectedDrink = "" // Unselect if already selected
+                                            } else {
+                                                selectedDrink = option
+                                            }
+                                        }
+                    Divider()
+                        .padding(.bottom, 5)
                 }
                 
             }
@@ -90,11 +110,12 @@ struct SideRadio: View {
             
             
         }
+    
     }
 }
 
-struct RadioButton_Previews: PreviewProvider {
-    static var previews: some View {
-        SideRadio()
-    }
-}
+//struct RadioButton_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SideRadio()
+//    }
+//}

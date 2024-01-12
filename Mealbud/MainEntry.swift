@@ -1,16 +1,8 @@
-//
-//  ContentView.swift
-//  TestProject0105
-//
-//  Created by Federico on 01/05/2022.
-//
 
 import SwiftUI
 
 struct MainEntry: View {
     @State var showSheet: Bool = false
-    @State var showingBottomSheet = false
-    @State var ordered = true
     
     let drinkOption: MenuDrinkOptions
     
@@ -40,7 +32,7 @@ struct MainEntry: View {
                                     .resizable()
                                     .scaledToFill()
                                     .frame(width: 100, height: 100)
-                                    .background(Color.blue)
+                                    .background(Color.red.opacity(12))
                                     .cornerRadius(14)
                                 
                                 VStack(alignment: .leading) {
@@ -69,7 +61,7 @@ struct MainEntry: View {
                                 }
                                 .frame(maxWidth:100)
                             }.fullScreenCover(isPresented: $showSheet, content: {
-                                            CheckOut(itemName: item.title, itemPrice: item.price, itemDescription: item.description, itemImage: item.imageName, selectedSide: "", selectedDrink: "")
+                                            CheckOut(itemName: item.title, itemPrice: item.price, itemDescription: item.description, itemImage: item.imageName)
                             })
                             .onTapGesture {
                                 showSheet.toggle()
@@ -96,15 +88,7 @@ struct MainEntry: View {
                 GeometryReader { geometry in
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 20) {
-                            //                        ForEach(0..<3) { index in
-                            //                            RoundedRectangle(cornerRadius: 14)
-                            //                                .frame(width: geometry.size.width * 0.75, height: 180)
-                            //                                .foregroundColor(Color.blue)
-                            //                                .overlay(
-                            //                                    Text("Card")
-                            //                                        .foregroundColor(.white)
-                            //                                )
-                            //                        }
+                          
                             
                             NavigationLink(destination: MenuView()) {
                                 
@@ -121,7 +105,7 @@ struct MainEntry: View {
                                             
                                             LinearGradient(
                                                 gradient: Gradient(
-                                                    colors: [Color.black.opacity(1), Color.black.opacity(0.5)]),
+                                                    colors: [Color.black.opacity(0.9), Color.black.opacity(0.3)]),
                                                 startPoint: .bottom,
                                                 endPoint: .top
                                             )
@@ -179,89 +163,12 @@ struct MainEntry: View {
                 
                 
                 
-                
-                Spacer()
-                
-                
-                
-                if ordered {
-                    
-                    Divider()
-                    
-                    
-                    HStack {
-                        
-                        Button {
-                            
-                            showingBottomSheet.toggle()
-                        } label: {
-                            
-                            HStack {
-                                
-                                Spacer()
-                                
-                                VStack {
-                                    
-                                    HStack {
-                                        
-                                        Text("View Order")
-                                            .font(.custom("Uber Move Bold", size: 23))
-                                            .font(.title2)
-                                          
-                                        
-                                    Spacer()
-                                        
-                                    }
-                                    
-                                    
-                                    HStack {
-                                        
-                                        Text("Preparing ...")
-                                            .font(.custom("Uber Move Meium", size: 15))
-                                        
-                                        Spacer()
-                                       
-                                    }
-                                    
-                                    
-                                    
-                                }
-                             
-                               
-                                
-                                Image(systemName: "arrow.up.circle.fill")
-                                    .resizable()
-                                    .frame(width: 40, height: 40)
-                          
-                                Spacer()
-                            }
-                            .padding(.horizontal, 30)
-                            .padding(.vertical, 5)
-                            //                    .background(.black)
-                            .cornerRadius(14)
-                            
-                            
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .padding(.horizontal, 25)
-                        
-                    }
-                    
-                    
-                }
-                
-                
+           
             
                 
                 
                 
                 
-                
-                
-            }.sheet(isPresented: $showingBottomSheet) {
-                BottomSheetView()
-                    .presentationDetents([.fraction(0.3)])
                 
                 
             }
@@ -289,132 +196,6 @@ struct MainEntry: View {
     
     
     
-    
-    
-}
-
-
-struct BottomSheetView: View {
-    var body: some View {
-        
-        
-        
-        
-        
-        ZStack {
-            
-            
-            VStack {
-                HStack {
-                    Text("Estimated delivery")
-                        .fontWeight(.semibold)
-                        .font(.subheadline)
-                        .padding(.horizontal, 30)
-                    
-                    Spacer()
-                    
-                }
-                
-                HStack {
-                    
-                    HStack {
-                        Text("8:33am – 8: 55am")
-                        
-                            .fontWeight(.light)
-                            .font(.title)
-                            .padding(.horizontal, 14)
-                        
-                        
-                        
-                        Spacer()
-                        
-                        Button {
-                            
-                        } label: {
-                            Image(systemName: "message")
-                                .resizable()
-                                .frame(width: 25, height: 25)
-                                .padding(.horizontal, 15)
-                                .foregroundColor(.black)
-                        }
-                        
-                        Button {
-                            
-                        } label: {
-                            Image(systemName: "phone")
-                                .resizable()
-                                .frame(width: 25, height: 25)
-                                .foregroundColor(.black)
-                            
-                        }
-                    }
-                    .padding()
-                    
-                    
-                    
-                }
-                .frame(maxWidth:.infinity)
-                .background(Color.gray.opacity(0.1))
-                
-                //
-                
-                
-                
-                HStack {
-                    
-                    HStack {
-                        Image("fettucine")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 50, height: 50)
-                            .background(Color.blue)
-                            .cornerRadius(14)
-                        
-                        VStack {
-                            HStack {
-                                Text("Fettucine Alfredo w/ Chicken")
-                                    .font(.subheadline)
-                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                
-                                Spacer()
-                            }
-                            
-                            HStack {
-                                Text("Total: $12.65")
-                                    .font(.footnote)
-                                Spacer()
-                            }
-                            
-                        }
-                        
-                        Spacer()
-                    }
-                    .padding(.top, 10)
-                    .padding(.horizontal, 30)
-                }
-            }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    }
     
     
 }

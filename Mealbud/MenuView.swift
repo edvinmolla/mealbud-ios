@@ -18,12 +18,12 @@ struct MenuView: View {
         NavigationView {
             
             VStack {
-                HStack(spacing: 16) {
+                HStack(spacing: 10) {
                     Button {
                         presentationMode.wrappedValue.dismiss()
                     } label: {
-                        Image(systemName: "arrow.left")
-                            .font(.title2)
+                        Image(systemName: "arrow.left.circle.fill")
+                            .font(.system(size: 27))
                     }
                     
                     Text("Epic at Ackerman")

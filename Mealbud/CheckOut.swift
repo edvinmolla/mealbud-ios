@@ -15,15 +15,22 @@ struct CheckOut: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var backendModel = BackendModel()
     @StateObject var applePayModel = ApplePayModel()
-    
+
     var itemName: String
     var itemPrice: String
     var itemDescription: String
     var itemImage: String
-    var selectedSide: String
-    var selectedDrink: String
+    @AppStorage("selectedSide") var selectedSide = ""
+    @AppStorage("selectedDrink") var selectedDrink = ""
+    
     
     var body: some View {
+        
+        let subtotal = Double(itemPrice.replacingOccurrences(of: "$", with: "", options: .literal, range: nil)) ?? 0
+        let delivery = 2.00
+        let tax = 0.00
+        let service = 0.35
+        let total = subtotal + delivery + tax + service
         
         NavigationView {
             
@@ -32,7 +39,6 @@ struct CheckOut: View {
                 
                 
                 VStack{
-                    
                     HStack {
                         Image(systemName: "xmark.circle.fill")
                             .font(.system(size: 50))
@@ -83,7 +89,7 @@ struct CheckOut: View {
                                 Spacer()
                                 
                                 VStack{
-                                    Text("$24.23")
+                                    Text(itemPrice)
                                         .font(.custom("Uber Move Bold", size: 18))
                                 }
                             }
@@ -93,32 +99,37 @@ struct CheckOut: View {
                         Section {
                             VStack(spacing: 10){
                                 HStack{
-                                    Text("Subtotal")
+                                    Text(selectedSide.count > 3 ? "Subtotal w/ side" : "Subtotal")
                                     Spacer()
-                                    Text(itemPrice)
+                                    Text(selectedSide.count > 3 ? "$\(String(format: "%.2f", (Double(itemPrice.replacingOccurrences(of: "$", with: "", options: .literal, range: nil)) ?? 0) + 1.25))" : itemPrice)
+
+
                                 }
                                 .padding(.vertical,2)
                                 .padding(.top, 8)
                                 HStack{
                                     Text("Delivery")
                                     Spacer()
-                                    Text("$24")
+                                    Text("$2.00")
                                 } .padding(.vertical,2)
                                 HStack{
                                     Text("Tax")
                                     Spacer()
-                                    Text("$24")
+                                    Text("$0.00")
                                 } .padding(.vertical,2)
                                 HStack{
                                     Text("Service")
                                     Spacer()
-                                    Text("$24")
+                                    Text("$0.35")
                                 }
                                 Divider()
-                                HStack{
+                                
+                               
+                                
+                                HStack {
                                     Text("Total")
                                     Spacer()
-                                    Text("$24")
+                                    Text(String(format: "$%.2f", selectedSide.count > 3 ? total + 1.25 : total))
                                 }
                                 .padding(.bottom, 8)
                                 .font(.custom("Uber Move Bold", size: 16))
@@ -128,9 +139,8 @@ struct CheckOut: View {
                         
                         
                         
-                        
-                        
-                        
+                      
+                       
                         
                         
                     }
@@ -138,7 +148,52 @@ struct CheckOut: View {
                     .frame(width: UIScreen.main.bounds.width)
                     
                     
-                   
+                    VStack {
+                        if backendModel.paymentIntentParams != nil {
+                            
+                            PaymentButton() {
+                                applePayModel.pay(clientSecret: backendModel.paymentIntentParams?.clientSecret)
+                                
+                            }
+                            .padding(.horizontal)
+                            
+                            
+                            
+                        } else {
+                            ProgressView()
+                        }
+                        if let paymentStatus = applePayModel.paymentStatus {
+                            HStack {
+                                switch paymentStatus {
+                                case .success:
+                                    
+                                    
+                                    Image(systemName: "checkmark.circle.fill").foregroundColor(.green)
+                                    Text("Payment complete!")
+                                    
+                                    
+                                    
+                                case .error:
+                                    Image(systemName: "xmark.octagon.fill").foregroundColor(.red)
+                                    Text("Payment failed!")
+                                case .userCancellation:
+                                    Image(systemName: "xmark.octagon.fill").foregroundColor(.orange)
+                                    Text("Payment canceled.")
+                                @unknown default:
+                                    Text("Unknown status")
+                                }
+                            }
+                        }
+                    }
+                    .ignoresSafeArea(.keyboard)
+                    .onAppear {
+                        if (!StripeAPI.deviceSupportsApplePay()) {
+                            print("Apple Pay is not supported on this device.")
+                        } else {
+                            backendModel.preparePaymentIntent(paymentMethodType: "card", currency: "usd")
+                        }
+                    }
+                  
                     
                     
                 }
@@ -146,60 +201,18 @@ struct CheckOut: View {
                 .navigationBarBackButtonHidden(true)
                 
                 
-                VStack {
-                    if backendModel.paymentIntentParams != nil {
-                        
-                        PaymentButton() {
-                            applePayModel.pay(clientSecret: backendModel.paymentIntentParams?.clientSecret)
-                            
-                        }
-                        .padding(.horizontal, 20)
-                        
-                        
-                        
-                    } else {
-                        ProgressView()
-                    }
-                    if let paymentStatus = applePayModel.paymentStatus {
-                        HStack {
-                            switch paymentStatus {
-                            case .success:
-                                
-                                
-                                Image(systemName: "checkmark.circle.fill").foregroundColor(.green)
-                                Text("Payment complete!")
-                                
-                                
-                               
-                            case .error:
-                                Image(systemName: "xmark.octagon.fill").foregroundColor(.red)
-                                Text("Payment failed!")
-                            case .userCancellation:
-                                Image(systemName: "xmark.octagon.fill").foregroundColor(.orange)
-                                Text("Payment canceled.")
-                            @unknown default:
-                                Text("Unknown status")
-                            }
-                        }
-                    }
-                }
-                .onAppear {
-                    if (!StripeAPI.deviceSupportsApplePay()) {
-                        print("Apple Pay is not supported on this device.")
-                    } else {
-                        backendModel.preparePaymentIntent(paymentMethodType: "card", currency: "usd")
-                    }
-                }
                 
+               
                 
-                
+
             }
+            
             
         }
         
     }
 }
 
-//#Preview {
-//    CheckOut()
-//}
+#Preview {
+    CheckOut(itemName: "ad", itemPrice: "ads", itemDescription: "ads", itemImage: "ads")
+}

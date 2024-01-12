@@ -11,6 +11,7 @@ struct ItemView: View {
     @State private var buttonValue = false
     @Environment(\.presentationMode) var presentationMode
     @State var showSheet: Bool = false
+   
     
     var itemName: String
     var itemDescription: String
@@ -22,9 +23,8 @@ struct ItemView: View {
         NavigationView {
             
             VStack {
-                
-                
-                
+       
+              
                 RoundedRectangle(cornerRadius: 14)
                     .frame(height: UIScreen.main.bounds.height * 0.24)
                     .foregroundColor(Color.red)
@@ -127,7 +127,6 @@ struct ItemView: View {
                         .frame(height: 8)
                         .edgesIgnoringSafeArea(.horizontal)
                  
-                    
                     SideRadio()
                         .padding(.vertical)
                     
@@ -155,7 +154,7 @@ struct ItemView: View {
                   
                     
                     .fullScreenCover(isPresented: $showSheet, content: {
-                        CheckOut(itemName: itemName, itemPrice: itemPrice, itemDescription: itemDescription, itemImage: itemImage, selectedSide: "", selectedDrink: "")
+                        CheckOut(itemName: itemName, itemPrice: itemPrice, itemDescription: itemDescription, itemImage: itemImage)
                     })
                     
                 }
