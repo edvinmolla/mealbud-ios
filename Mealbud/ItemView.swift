@@ -143,32 +143,29 @@ struct ItemView: View {
                         Text("Order Now")
                             .frame(width: UIScreen.main.bounds.width * 0.81, height: 24)
                             .padding()
-                            
                             .background(Color.black)
                             .foregroundColor(Color.white)
                             .font(.custom("Uber Move Bold", size: 23))
                             .cornerRadius(14)
                     }
+                    
                     .padding()
                     .padding(.bottom, 18)
                   
                     
-                    .fullScreenCover(isPresented: $showSheet, content: {
-                        CheckOut(itemName: itemName, itemPrice: itemPrice, itemDescription: itemDescription, itemImage: itemImage)
-                    })
+                    
                     
                 }
                 
                 
             }.ignoresSafeArea()
             .navigationBarBackButtonHidden(true)
-            
         }
+        .fullScreenCover(isPresented: $showSheet, content: {
+            CheckOut(itemName: itemName, itemPrice: itemPrice, itemDescription: itemDescription, itemImage: itemImage)
+        })
         .navigationBarHidden(true)
-        
-        
     }
-    
 }
 
 

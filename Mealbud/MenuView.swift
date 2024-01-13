@@ -73,7 +73,6 @@ struct MenuView: View {
                 }
                 
             }
-            
             .padding(.top, 20)
         }.navigationBarHidden(true)
     }

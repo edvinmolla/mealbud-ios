@@ -20,6 +20,7 @@ struct CheckOut: View {
     var itemPrice: String
     var itemDescription: String
     var itemImage: String
+    
     @AppStorage("selectedSide") var selectedSide = ""
     @AppStorage("selectedDrink") var selectedDrink = ""
     @AppStorage("applePayPrice") var applePayPrice = ""
@@ -170,8 +171,15 @@ struct CheckOut: View {
                                 case .success:
                                     
                                     
+
+                                    
                                     Image(systemName: "checkmark.circle.fill").foregroundColor(.green)
                                     Text("Payment complete!")
+                                                                .onAppear {
+                                                                    selectedSide = ""
+                                                                    selectedDrink = ""
+                                                                    applePayPrice = ""
+                                                                }
                                     
                                     
                                     
