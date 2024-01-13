@@ -6,6 +6,7 @@ struct MainEntry: View {
     
     let drinkOption: MenuDrinkOptions
     
+    @AppStorage("isHidden") var isHidden = false
     
     var body: some View {
         
@@ -166,9 +167,53 @@ struct MainEntry: View {
            
             
                 
+                Spacer()
                 
+            
+                if isHidden {
+                    
+              
                 
+                Divider()
                 
+                HStack {
+                             
+                                    
+                                    HStack {
+                                        
+                                        Text("Tap to view order")
+                                            .fontWeight(.bold)
+                                            .font(.title2)
+                //                            .foregroundColor(.white)
+                                        
+                                        
+                                        Spacer()
+                                        
+                                        Image(systemName: "arrow.up.circle.fill")
+                                            .resizable()
+                                            .frame(width: 40, height: 40)
+                //                            .foregroundColor(.white)
+                                        
+                                    }
+                                    .padding(.horizontal, 30)
+                                    .padding(.vertical, 5)
+                                    .background(.black)
+                                    .cornerRadius(14)
+                                    
+                                    
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .padding(.horizontal, 25)
+                                .fullScreenCover(isPresented: $showSheet, content: {
+                                                CheckOut(itemName: "", itemPrice: "", itemDescription: "", itemImage: "")
+                                })
+                                .onTapGesture {
+                                    showSheet.toggle()
+                                }
+                                
+                }
+            
                 
                 
             }

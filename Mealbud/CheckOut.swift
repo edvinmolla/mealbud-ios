@@ -7,6 +7,37 @@
 
 import SwiftUI
 import Stripe
+import Foundation
+
+func getCurrentAndFutureTimes() -> (currentTimePlus20: String, currentTimePlus40: String) {
+    let currentDate = Date()
+
+    // Save the current time
+    let formatter = DateFormatter()
+    formatter.dateFormat = "h:mm a"
+    let currentTime = formatter.string(from: currentDate)
+
+    var leftEnd = "N/A"
+    var rightEnd = "N/A"
+
+    // Adding 20 minutes to the current date
+    if let timePlus20 = Calendar.current.date(byAdding: .minute, value: 20, to: currentDate) {
+        leftEnd = formatter.string(from: timePlus20)
+
+        // Adding another 20 minutes to the current date
+        if let timePlus40 = Calendar.current.date(byAdding: .minute, value: 20, to: timePlus20) {
+            rightEnd = formatter.string(from: timePlus40)
+        }
+    }
+
+    // Save the values in AppStorage
+    @AppStorage("leftEnd") var leftEndStorage = leftEnd
+    @AppStorage("rightEnd") var rightEndStorage = rightEnd
+
+    return (leftEnd, rightEnd)
+}
+
+
 
 struct CheckOut: View {
     
@@ -15,8 +46,9 @@ struct CheckOut: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var backendModel = BackendModel()
     @StateObject var applePayModel = ApplePayModel()
-    @AppStorage("checkoutIsFadedOut") var checkoutIsFadedOut = false
-    @State private var trackingIsFadedOut = true
+    @AppStorage("isHidden") var isHidden = false
+    let callTimeFunction = getCurrentAndFutureTimes()
+
     
     var itemName: String
     var itemPrice: String
@@ -40,11 +72,7 @@ struct CheckOut: View {
             
             VStack{
                 
-                Button {
-                    checkoutIsFadedOut.toggle()
-                } label: {
-                    Text("click here")
-                }
+               
                 
                 VStack{
                     HStack {
@@ -58,272 +86,312 @@ struct CheckOut: View {
                         Spacer()
                     }
                     
-//                    VStack{
-//                        
-//                        
-//                        Form {
-//                            Section(header: Text("Deliver to"))
-//                            {
-//                                TextField("Office/Delivery location", text: $location)
-//                                TextField("Phone number", text: $phone)
-//                            }
-//                            
-//                            
-//                            Section
-//                            {
-//                                
-//                                HStack {
-//                                    Image(itemImage)
-//                                        .resizable()
-//                                        .scaledToFill()
-//                                        .frame(width: 60, height: 60)
-//                                        .clipped()
-//                                        .cornerRadius(10)
-//                                    
-//                                    VStack{
-//                                        
-//                                        HStack{
-//                                            Text(itemName)
-//                                                .font(.custom("Uber Move Bold", size: 16))
-//                                            Spacer()
-//                                        }
-//                                        HStack{
-//                                            Text(itemDescription)
-//                                                .font(.custom("Uber Move Medium", size: 12))
-//                                            Spacer()
-//                                        }
-//                                        
-//                                        
-//                                        
-//                                    }
-//                                    
-//                                    Spacer()
-//                                    
-//                                    VStack{
-//                                        Text(itemPrice)
-//                                            .font(.custom("Uber Move Bold", size: 18))
-//                                    }
-//                                }
-//                                
-//                            }
-//                            
-//                            Section {
-//                                VStack(spacing: 10){
-//                                    HStack{
-//                                        Text(selectedSide.count > 3 ? "Subtotal w/ side" : "Subtotal")
-//                                        Spacer()
-//                                        Text(selectedSide.count > 3 ? "$\(String(format: "%.2f", (Double(itemPrice.replacingOccurrences(of: "$", with: "", options: .literal, range: nil)) ?? 0) + 1.25))" : itemPrice)
-//                                        
-//                                        
-//                                    }
-//                                    .padding(.vertical,2)
-//                                    .padding(.top, 8)
-//                                    HStack{
-//                                        Text("Delivery")
-//                                        Spacer()
-//                                        Text("$2.00")
-//                                    } .padding(.vertical,2)
-//                                    HStack{
-//                                        Text("Tax")
-//                                        Spacer()
-//                                        Text("$0.00")
-//                                    } .padding(.vertical,2)
-//                                    HStack{
-//                                        Text("Service")
-//                                        Spacer()
-//                                        Text("$0.35")
-//                                    }
-//                                    Divider()
-//                                    
-//                                    
-//                                    
-//                                    HStack {
-//                                        Text("Total")
-//                                        Spacer()
-//                                        Text(String(format: "$%.2f", selectedSide.count > 3 ? total + 1.25 : total))
-//                                    }
-//                                    .padding(.bottom, 8)
-//                                    .font(.custom("Uber Move Bold", size: 16))
-//                                }
-//                                .font(.custom("Uber Move Medium", size: 16))
-//                            }
-//                            
-//                            
-//                            
-//                            
-//                            
-//                            
-//                            
-//                        }
-//                        
-//                        .frame(width: UIScreen.main.bounds.width)
-//                        
-//                        
-//                        VStack {
-//                            if backendModel.paymentIntentParams != nil {
-//                                
-//                                PaymentButton() {
-//                                    applePayPrice = String(format: "%.2f", total)
-//                                    applePayModel.pay(clientSecret: backendModel.paymentIntentParams?.clientSecret)
-//                                    
-//                                }
-//                                .padding(.horizontal)
-//                                
-//                                
-//                                
-//                            } else {
-//                                ProgressView()
-//                            }
-//                            if let paymentStatus = applePayModel.paymentStatus {
-//                                HStack {
-//                                    switch paymentStatus {
-//                                    case .success:
-//                                        
-//                                        
-//                                        
-//                                        
-//                                        Image(systemName: "checkmark.circle.fill").foregroundColor(.green)
-//                                        Text("Payment complete!")
-//                                            .onAppear {
-//                                                selectedSide = ""
-//                                                selectedDrink = ""
-//                                                applePayPrice = ""
-//                                                
-//                                            }
-//                                        
-//                                        
-//                                        
-//                                    case .error:
-//                                        Image(systemName: "xmark.octagon.fill").foregroundColor(.red)
-//                                        Text("Payment failed!")
-//                                    case .userCancellation:
-//                                        Image(systemName: "xmark.octagon.fill").foregroundColor(.orange)
-//                                        Text("Payment canceled.")
-//                                    @unknown default:
-//                                        Text("Unknown status")
-//                                    }
-//                                }
-//                            }
-//                        }
-//                        .ignoresSafeArea(.keyboard)
-//                        .onAppear {
-//                            if (!StripeAPI.deviceSupportsApplePay()) {
-//                                print("Apple Pay is not supported on this device.")
-//                            } else {
-//                                backendModel.preparePaymentIntent(paymentMethodType: "card", currency: "usd")
-//                            }
-//                        }
-//                        
-//                    }
-//                    .opacity(checkoutIsFadedOut ? 0.0 : 1.0)
-//                    .animation(.easeInOut(duration: 0.2))
-//                    
-//                    
-                    
-                    VStack{
+                    if !isHidden {
                         
-                        Form {
-                                                    Section(header: Text("Delivering to"))
-                                                    {
-                                                        Text("Sproul Hall 223")
-                                                        Text("4242322492")
-                                                    }
-                        
-                        
-                                                    Section
-                                                    {
-                                                        VStack {
-                                                            
-                                                            HStack {
-                                                                Image(itemImage)
-                                                                    .resizable()
-                                                                    .scaledToFill()
-                                                                    .frame(width: 60, height: 60)
-                                                                    .clipped()
-                                                                    .cornerRadius(10)
-                                                                
-                                                                VStack{
-                                                                    
-                                                                    HStack{
-                                                                        Text(itemName)
-                                                                            .font(.custom("Uber Move Bold", size: 16))
-                                                                        Spacer()
-                                                                    }
-                                                                    HStack{
-                                                                        Text(itemDescription)
-                                                                            .font(.custom("Uber Move Medium", size: 12))
-                                                                        Spacer()
-                                                                    }
-                                                                    
-                                                                    
-                                                                    
-                                                                }
-                                                                
-                                                                Spacer()
-                                                                
-                                                                VStack{
-                                                                    Text(itemPrice)
-                                                                        .font(.custom("Uber Move Bold", size: 18))
-                                                                }
-                                                            }
-                                                            
-                                                            
-                                                            HStack {
-                                                                Text("Total")
-                                                                Spacer()
-                                                                Text(String(format: "$%.2f", selectedSide.count > 3 ? total + 1.25 : total))
-                                                            }
-                                                            .padding(.vertical, 8)
-                                                            .font(.custom("Uber Move Bold", size: 16))
-                                                            
-                                                            
-                                                        }
-                        
-                                                    }
-                        
-                                                    Section {
-                                                        VStack(spacing: 10){
-                                                           
-                                                            HStack {
-                                                                Text("Total")
-                                                                Spacer()
-                                                                Text(String(format: "$%.2f", selectedSide.count > 3 ? total + 1.25 : total))
-                                                            }
-                                                            .padding(.vertical, 8)
-                                                            .font(.custom("Uber Move Bold", size: 16))
-                                                        }
-                                                        .font(.custom("Uber Move Medium", size: 16))
-                                                    }
-                                                    .listRowBackground(Color.clear)
-                        
-                        
-                        
-                        
-                        
-                                                }
-                        
-                        Spacer()
-                        
-                        HStack(spacing: 30) {
+                        VStack {
                             
-                            Image(systemName: "phone")
-                                .resizable()
-                                .frame(width: 25, height: 25)
-                                .foregroundColor(.black)
-                            Image(systemName: "message")
-                                .resizable()
-                                .frame(width: 25, height: 25)
-                                .foregroundColor(.black)
+                            
+                            Form {
+                                Section(header: Text("Deliver to"))
+                                {
+                                    TextField("Office/Delivery location", text: $location)
+                                    TextField("Phone number", text: $phone)
+                                }
+                                
+                                
+                                Section
+                                {
+                                    
+                                    HStack {
+                                        Image(itemImage)
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 60, height: 60)
+                                            .clipped()
+                                            .cornerRadius(10)
+                                        
+                                        VStack{
+                                            
+                                            HStack{
+                                                Text(itemName)
+                                                    .font(.custom("Uber Move Bold", size: 16))
+                                                Spacer()
+                                            }
+                                            HStack{
+                                                Text(itemDescription)
+                                                    .font(.custom("Uber Move Medium", size: 12))
+                                                Spacer()
+                                            }
+                                            
+                                            
+                                            
+                                        }
+                                        
+                                        Spacer()
+                                        
+                                        VStack{
+                                            Text(itemPrice)
+                                                .font(.custom("Uber Move Bold", size: 18))
+                                        }
+                                    }
+                                    
+                                }
+                                
+                                Section {
+                                    VStack(spacing: 10){
+                                        HStack{
+                                            Text(selectedSide.count > 3 ? "Subtotal w/ side" : "Subtotal")
+                                            Spacer()
+                                            Text(selectedSide.count > 3 ? "$\(String(format: "%.2f", (Double(itemPrice.replacingOccurrences(of: "$", with: "", options: .literal, range: nil)) ?? 0) + 1.25))" : itemPrice)
+                                            
+                                            
+                                        }
+                                        .padding(.vertical,2)
+                                        .padding(.top, 8)
+                                        HStack{
+                                            Text("Delivery")
+                                            Spacer()
+                                            Text("$2.00")
+                                        } .padding(.vertical,2)
+                                        HStack{
+                                            Text("Tax")
+                                            Spacer()
+                                            Text("$0.00")
+                                        } .padding(.vertical,2)
+                                        HStack{
+                                            Text("Service")
+                                            Spacer()
+                                            Text("$0.35")
+                                        }
+                                        Divider()
+                                        
+                                        
+                                        
+                                        HStack {
+                                            Text("Total")
+                                            Spacer()
+                                            Text(String(format: "$%.2f", selectedSide.count > 3 ? total + 1.25 : total))
+                                        }
+                                        .padding(.bottom, 8)
+                                        .font(.custom("Uber Move Bold", size: 16))
+                                    }
+                                    .font(.custom("Uber Move Medium", size: 16))
+                                }
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                            }
+                            
+                            .frame(width: UIScreen.main.bounds.width)
+                            
+                           
+                            VStack {
+                                if backendModel.paymentIntentParams != nil {
+                                    
+                                    PaymentButton() {
+                                        applePayPrice = String(format: "%.2f", total)
+                                        applePayModel.pay(clientSecret: backendModel.paymentIntentParams?.clientSecret)
+                                    }
+                                    .padding(.horizontal)
+                                } else {
+                                    ProgressView()
+                                }
+                                if let paymentStatus = applePayModel.paymentStatus {
+                                    HStack {
+                                        switch paymentStatus {
+                                        case .success:
+                                            
+                                            
+                                            
+                                            
+                                            Image(systemName: "checkmark.circle.fill").foregroundColor(.green)
+                                            Text("Payment complete!")
+                                                .onAppear {
+                                                    selectedSide = ""
+                                                    selectedDrink = ""
+                                                    applePayPrice = ""
+                                                    isHidden = true
+                                                }
+                                            
+                                            
+                                            
+                                           
+                                            
+                                            
+                                            
+                                        case .error:
+                                            Image(systemName: "xmark.octagon.fill").foregroundColor(.red)
+                                            Text("Payment failed!")
+                                        case .userCancellation:
+                                            Image(systemName: "xmark.octagon.fill").foregroundColor(.orange)
+                                            Text("Payment canceled.")
+                                        @unknown default:
+                                            Text("Unknown status")
+                                        }
+                                    }
+                                }
+                            }
+                            .ignoresSafeArea(.keyboard)
+                            .onAppear {
+                                if (!StripeAPI.deviceSupportsApplePay()) {
+                                    print("Apple Pay is not supported on this device.")
+                                } else {
+                                    backendModel.preparePaymentIntent(paymentMethodType: "card", currency: "usd")
+                                }
+                            }
+                            
+                            
                         }
-                    
+                        
+                    } else {
+                        
+                        VStack {
+                            Form {
+                                Section(header: Text("Delivering to"))
+                                {
+                                    Text("Sproul hall 2022")
+                                        .font(.custom("Uber Move Medium", size: 16))
+                                    Text("442442422")
+                                        .font(.custom("Uber Move Medium", size: 16))
+                                }
+                                
+                                
+                                Section
+                                {
+                                    
+                                    HStack {
+                                        Image(itemImage)
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 60, height: 60)
+                                            .clipped()
+                                            .cornerRadius(10)
+                                        
+                                        VStack{
+                                            
+                                            HStack{
+                                                Text(itemName)
+                                                    .font(.custom("Uber Move Bold", size: 16))
+                                                Spacer()
+                                            }
+                                            HStack{
+                                                Text(itemDescription)
+                                                    .font(.custom("Uber Move Medium", size: 12))
+                                                Spacer()
+                                            }
+                                            
+                                            
+                                            
+                                        }
+                                        
+                                        Spacer()
+                                        
+                                        VStack{
+                                            Text(itemPrice)
+                                                .font(.custom("Uber Move Bold", size: 18))
+                                        }
+                                    }
+                                    
+                                }
+                                
+                                Section {
+                                    VStack(spacing: 10){
+                                        HStack{
+                                            Text(selectedSide.count > 3 ? "Subtotal w/ side" : "Subtotal")
+                                            Spacer()
+                                            Text(selectedSide.count > 3 ? "$\(String(format: "%.2f", (Double(itemPrice.replacingOccurrences(of: "$", with: "", options: .literal, range: nil)) ?? 0) + 1.25))" : itemPrice)
+                                            
+                                            
+                                        }
+                                        .padding(.vertical,2)
+                                        .padding(.top, 8)
+                                        
+                                        
+                                        
+                                        HStack {
+                                            Text("You paid")
+                                            Spacer()
+                                            Text(String(format: "$%.2f", selectedSide.count > 3 ? total + 1.25 : total))
+                                        }
+                                        .padding(.bottom, 8)
+                                        .font(.custom("Uber Move Bold", size: 16))
+                                    }
+                                    .font(.custom("Uber Move Medium", size: 16))
+                                }
+                                
+                                Section {
+                                    VStack(spacing: 10) {
+                                        HStack{
+                                            Text("Estimated time")
+                                                .font(.custom("Uber Move Bold", size: 20))
+                                            
+                                            
+                                            Spacer()
+                                        }
+                                        
+                                        
+                                        HStack{
+                                            Text(callTimeFunction.currentTimePlus20 + " – " + callTimeFunction.currentTimePlus40)
+                                                .font(.custom("Uber Move Medium", size: 32))
+                                            
+                                            
+                                            Spacer()
+                                        }
+                                        
+                                    }
+                                    
+                                }
+                                .listRowBackground(Color.clear)
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                            }
+                            Spacer()
+                            
+                            VStack {
+                                Button(action: {
+                                    presentationMode.wrappedValue.dismiss()
+                                    isHidden = false
+                                }) {
+                                    Text("Received Order")
+                                        .frame(width: UIScreen.main.bounds.width * 0.81, height: 24)
+                                        .padding()
+                                        .background(Color.black)
+                                        .foregroundColor(Color.white)
+                                        .font(.custom("Uber Move Bold", size: 23))
+                                        .cornerRadius(14)
+                                }
+                                
+                                .padding()
+                               
+                              
+                                
+                                
+                                
+                            }
+                        }
+                        
+                        
+                        
+                        
                     }
+                    
+                   
                     
                 }
                 .background(Color.gray.opacity(0.1))
                 .navigationBarBackButtonHidden(true)
                 
                 
-                
+            
                
                 
 
