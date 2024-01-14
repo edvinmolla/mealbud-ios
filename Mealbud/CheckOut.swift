@@ -9,31 +9,32 @@ import SwiftUI
 import Stripe
 import Foundation
 
+
 func getCurrentAndFutureTimes() -> (currentTimePlus20: String, currentTimePlus40: String) {
     let currentDate = Date()
-
+    
     // Save the current time
     let formatter = DateFormatter()
     formatter.dateFormat = "h:mm a"
     let currentTime = formatter.string(from: currentDate)
-
+    
     var leftEnd = "N/A"
     var rightEnd = "N/A"
-
+    
     // Adding 20 minutes to the current date
     if let timePlus20 = Calendar.current.date(byAdding: .minute, value: 20, to: currentDate) {
         leftEnd = formatter.string(from: timePlus20)
-
+        
         // Adding another 20 minutes to the current date
         if let timePlus40 = Calendar.current.date(byAdding: .minute, value: 20, to: timePlus20) {
             rightEnd = formatter.string(from: timePlus40)
         }
     }
-
+    
     // Save the values in AppStorage
     @AppStorage("leftEnd") var leftEndStorage = leftEnd
     @AppStorage("rightEnd") var rightEndStorage = rightEnd
-
+    
     return (leftEnd, rightEnd)
 }
 
@@ -48,7 +49,7 @@ struct CheckOut: View {
     @StateObject var applePayModel = ApplePayModel()
     @AppStorage("isHidden") var isHidden = false
     let callTimeFunction = getCurrentAndFutureTimes()
-
+    
     
     var itemName: String
     var itemPrice: String
@@ -58,6 +59,42 @@ struct CheckOut: View {
     @AppStorage("selectedSide") var selectedSide = ""
     @AppStorage("selectedDrink") var selectedDrink = ""
     @AppStorage("applePayPrice") var applePayPrice = ""
+    
+    
+    func makeAPICall() {
+        // Your API endpoint URL
+        let apiUrl = URL(string: "https://mealbud.us/test-api")!
+        
+        // Prepare the data to be sent in the POST request
+        let postData: [String: Any] = [
+            "location": location,
+            "phone": phone,
+            // Add other variables as needed
+        ]
+        
+        // Convert the data to JSON
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: postData) else {
+            print("Error converting data to JSON")
+            return
+        }
+        
+        var request = URLRequest(url: apiUrl)
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+        
+        // Set headers if needed
+        // request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        // Create a URLSession task for the request
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error: \(error)")
+            } else if let data = data {
+                // Handle the response data as needed
+                print("API call successful. Response: \(String(data: data, encoding: .utf8) ?? "")")
+            }
+        }.resume()
+    }
     
     
     var body: some View {
@@ -72,7 +109,7 @@ struct CheckOut: View {
             
             VStack{
                 
-               
+                
                 
                 VStack{
                     HStack {
@@ -84,6 +121,36 @@ struct CheckOut: View {
                                 presentationMode.wrappedValue.dismiss()
                             }
                         Spacer()
+                        
+                        if isHidden {
+                            
+                       
+                            Link(destination: URL(string: "tel://+14244075941")!) {
+                                        Image(systemName: "phone")
+                                            .resizable()
+                                            .frame(width: 25, height: 25)
+                                            .foregroundColor(.black)
+                                    }
+
+                        
+                            Button(action: {
+                                        // Use the URL scheme to open the messaging app with a pre-made message
+                                        let message = "Your pre-made message here"
+                                        let urlString = "sms://14244075941&body=\(message)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+                                        if let url = URL(string: urlString) {
+                                            UIApplication.shared.open(url)
+                                        }
+                                    }) {
+                                        Image(systemName: "message")
+                                            .resizable()
+                                            .frame(width: 25, height: 25)
+                                            .padding(.horizontal, 15)
+                                            .foregroundColor(.black)
+                                            .padding(.horizontal)
+                                    }
+                        
+                        }
+                        
                     }
                     
                     if !isHidden {
@@ -188,7 +255,7 @@ struct CheckOut: View {
                             
                             .frame(width: UIScreen.main.bounds.width)
                             
-                           
+                            
                             VStack {
                                 if backendModel.paymentIntentParams != nil {
                                     
@@ -211,15 +278,17 @@ struct CheckOut: View {
                                             Image(systemName: "checkmark.circle.fill").foregroundColor(.green)
                                             Text("Payment complete!")
                                                 .onAppear {
+                                                    makeAPICall()
                                                     selectedSide = ""
                                                     selectedDrink = ""
                                                     applePayPrice = ""
+                                                    presentationMode.wrappedValue.dismiss()
                                                     isHidden = true
                                                 }
                                             
                                             
                                             
-                                           
+                                            
                                             
                                             
                                             
@@ -342,6 +411,13 @@ struct CheckOut: View {
                                             Spacer()
                                         }
                                         
+                                      
+                                            
+                                          
+                                            
+                                            
+                                        
+                                        
                                     }
                                     
                                 }
@@ -351,16 +427,16 @@ struct CheckOut: View {
                                 
                                 
                                 
-                                
-                                
                             }
                             Spacer()
                             
                             VStack {
+                                
                                 Button(action: {
                                     presentationMode.wrappedValue.dismiss()
                                     isHidden = false
                                 }) {
+                                    
                                     Text("Received Order")
                                         .frame(width: UIScreen.main.bounds.width * 0.81, height: 24)
                                         .padding()
@@ -370,9 +446,17 @@ struct CheckOut: View {
                                         .cornerRadius(14)
                                 }
                                 
-                                .padding()
-                               
-                              
+                                .padding(.horizontal)
+                                
+                                HStack{
+                                    Text("Only one order at a time allowed until March 1st")
+                                        .foregroundColor(.gray.opacity(0.9))
+                                        .font(.custom("Uber Move Medium", size: 15))
+                                    
+                                    
+                                    
+                                }
+                                
                                 
                                 
                                 
@@ -384,20 +468,20 @@ struct CheckOut: View {
                         
                     }
                     
-                   
+                    
                     
                 }
                 .background(Color.gray.opacity(0.1))
                 .navigationBarBackButtonHidden(true)
                 
                 
-            
-               
                 
-
+                
+                
+                
             }
-           
-               
+            
+            
             
             
         }

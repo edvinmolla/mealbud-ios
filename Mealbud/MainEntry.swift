@@ -170,11 +170,11 @@ struct MainEntry: View {
                 Spacer()
                 
             
-                if isHidden {
+                if isHidden { // change
                     
               
                 
-                Divider()
+//                Divider()
                 
                 HStack {
                              
@@ -183,8 +183,8 @@ struct MainEntry: View {
                                         
                                         Text("Tap to view order")
                                             .fontWeight(.bold)
-                                            .font(.title2)
-                //                            .foregroundColor(.white)
+                                            .font(.custom("Uber Move Bold", size: 23))
+                                            .foregroundColor(.white)
                                         
                                         
                                         Spacer()
@@ -192,19 +192,23 @@ struct MainEntry: View {
                                         Image(systemName: "arrow.up.circle.fill")
                                             .resizable()
                                             .frame(width: 40, height: 40)
-                //                            .foregroundColor(.white)
+                                            .foregroundColor(.white)
                                         
                                     }
+                    
                                     .padding(.horizontal, 30)
-                                    .padding(.vertical, 5)
-                                    .background(.black)
+                                    .padding(.vertical, 16)
+                                    
                                     .cornerRadius(14)
                                     
                                     
                                 }
+                    
                                 .buttonStyle(PlainButtonStyle())
                                 .frame(maxWidth: .infinity, alignment: .center)
+                    
                                 .padding(.horizontal, 25)
+                                .background(.black)
                                 .fullScreenCover(isPresented: $showSheet, content: {
                                                 CheckOut(itemName: "", itemPrice: "", itemDescription: "", itemImage: "")
                                 })
