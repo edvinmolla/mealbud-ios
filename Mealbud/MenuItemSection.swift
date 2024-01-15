@@ -34,10 +34,12 @@ struct MenuItemSection: View {
                                 Text(foodItem.title)
                                     .font(.title3.bold())
                                     .foregroundColor(.black)
+                                    .multilineTextAlignment(.leading)
                                 
                                 Text(foodItem.description)
                                     .font(.caption)
                                     .foregroundColor(.gray)
+                                    .multilineTextAlignment(.leading)
                                 
                                 Text("\(foodItem.price)")
                                     .font(.system(size: 14))

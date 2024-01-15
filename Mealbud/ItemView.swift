@@ -136,34 +136,46 @@ struct ItemView: View {
                 
                 Spacer()
                 
-                VStack {
-                    Button(action: {
-                        showSheet.toggle()
-                    }) {
-                        Text("Order Now")
-                            .frame(width: UIScreen.main.bounds.width * 0.81, height: 24)
+                NavigationLink(
+                    
+                    destination: CheckOut(itemName: itemName, itemPrice: itemPrice, itemDescription: itemDescription, itemImage: itemImage),
+                    label: {
+                        
+                        HStack {
+                           Spacer()
+                                Text("Order Now")
+                                    
+                            
+                            Spacer()
+                            
+                            Image(systemName: "arrow.right")
+                                .font(.system(size: 27))
+                                
+                            
+                            
+                            }
+                        .frame(width: UIScreen.main.bounds.width * 0.81, height: 24)
+                        .padding()
+                        .background(Color.black)
+                        .foregroundColor(Color.white)
+                        .font(.custom("Uber Move Bold", size: 23))
+                        .cornerRadius(14)
                             .padding()
-                            .background(Color.black)
-                            .foregroundColor(Color.white)
-                            .font(.custom("Uber Move Bold", size: 23))
-                            .cornerRadius(14)
-                    }
-                    
-                    .padding()
-                    .padding(.bottom, 18)
-                  
-                    
-                    
-                    
-                }
-                
-                
+                            .padding(.bottom, 18)
+                            
+                            
+                            
+                            
+                        }
+                        
+                    )
             }.ignoresSafeArea()
             .navigationBarBackButtonHidden(true)
+                    
         }
-        .fullScreenCover(isPresented: $showSheet, content: {
-            CheckOut(itemName: itemName, itemPrice: itemPrice, itemDescription: itemDescription, itemImage: itemImage)
-        })
+//        .fullScreenCover(isPresented: $showSheet, content: {
+//            CheckOut(itemName: itemName, itemPrice: itemPrice, itemDescription: itemDescription, itemImage: itemImage)
+//        })
         .navigationBarHidden(true)
     }
 }

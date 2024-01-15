@@ -41,9 +41,7 @@ func getCurrentAndFutureTimes() -> (currentTimePlus20: String, currentTimePlus40
 
 
 struct CheckOut: View {
-    
-    @State private var location = ""
-    @State private var phone = ""
+
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var backendModel = BackendModel()
     @StateObject var applePayModel = ApplePayModel()
@@ -56,19 +54,30 @@ struct CheckOut: View {
     var itemDescription: String
     var itemImage: String
     
+    @AppStorage("location") var location = ""
+    @AppStorage("phone") var phone = ""
+    @AppStorage("savedItemImage") var savedItemImage = ""
     @AppStorage("selectedSide") var selectedSide = ""
     @AppStorage("selectedDrink") var selectedDrink = ""
     @AppStorage("applePayPrice") var applePayPrice = ""
-    
+    @AppStorage("drinkCheckout") var drinkCheckout = "false"
+    @AppStorage("savedItemName") var savedItemName = ""
+    @AppStorage("savedItemDescription") var savedItemDescription = ""
+    @AppStorage("itemSubtotal") var itemSubtotal = ""
+    @AppStorage("savedItemTotalPrice") var savedItemTotalPrice = ""
     
     func makeAPICall() {
         // Your API endpoint URL
-        let apiUrl = URL(string: "https://mealbud.us/test-api")!
+        let apiUrl = URL(string: "https://mealbud.us/sendorder")!
         
         // Prepare the data to be sent in the POST request
         let postData: [String: Any] = [
             "location": location,
             "phone": phone,
+            "itemName": savedItemName,
+            "totalPrice": savedItemTotalPrice,
+            "foodSide": selectedSide,
+            "drinkSide": selectedDrink
             // Add other variables as needed
         ]
         
@@ -108,24 +117,47 @@ struct CheckOut: View {
         NavigationView {
             
             VStack{
-                
-                
-                
+            
                 VStack{
+                
                     HStack {
-                        Image(systemName: "xmark.circle.fill")
-                            .font(.system(size: 50))
-                            .foregroundColor(.black)
-                            .padding(.horizontal)
-                            .onTapGesture {
-                                presentationMode.wrappedValue.dismiss()
+                        
+                        if drinkCheckout != "true" {
+                           
+                            HStack(spacing: 10) {
+                                Button {
+                                    presentationMode.wrappedValue.dismiss()
+                                } label: {
+                                    Image(systemName: "arrow.left.circle.fill")
+                                        .font(.system(size: 27))
+                                }
+                             
+                                
+                                Spacer()
+                                
+                             
                             }
+                            .padding(.horizontal)
+                            .foregroundColor(.black)
+                            
+                        } else {
+                            Image(systemName: "xmark.circle.fill")
+                                .font(.system(size: 50))
+                                .foregroundColor(.black)
+                                .padding(.horizontal)
+                                .onTapGesture {
+                                    presentationMode.wrappedValue.dismiss()
+                                }
+                            
+                        }
+       
+                        
                         Spacer()
                         
                         if isHidden {
                             
                        
-                            Link(destination: URL(string: "tel://+14244075941")!) {
+                            Link(destination: URL(string: "tel://14244075941")!) {
                                         Image(systemName: "phone")
                                             .resizable()
                                             .frame(width: 25, height: 25)
@@ -283,6 +315,11 @@ struct CheckOut: View {
                                                     selectedDrink = ""
                                                     applePayPrice = ""
                                                     presentationMode.wrappedValue.dismiss()
+                                                    savedItemName = itemName
+                                                    savedItemDescription = itemDescription
+                                                    itemSubtotal = itemPrice
+                                                    savedItemImage = itemImage
+                                                    savedItemTotalPrice = String(format: "%.2f", total)
                                                     isHidden = true
                                                 }
                                             
@@ -322,18 +359,19 @@ struct CheckOut: View {
                             Form {
                                 Section(header: Text("Delivering to"))
                                 {
-                                    Text("Sproul hall 2022")
+                                    Text(location)
                                         .font(.custom("Uber Move Medium", size: 16))
-                                    Text("442442422")
+                                    Text(phone)
                                         .font(.custom("Uber Move Medium", size: 16))
+                                    
                                 }
-                                
+                                .listRowBackground(Color.clear)
                                 
                                 Section
                                 {
                                     
                                     HStack {
-                                        Image(itemImage)
+                                        Image(savedItemImage)
                                             .resizable()
                                             .scaledToFill()
                                             .frame(width: 60, height: 60)
@@ -343,12 +381,12 @@ struct CheckOut: View {
                                         VStack{
                                             
                                             HStack{
-                                                Text(itemName)
+                                                Text(savedItemName)
                                                     .font(.custom("Uber Move Bold", size: 16))
                                                 Spacer()
                                             }
                                             HStack{
-                                                Text(itemDescription)
+                                                Text(savedItemDescription)
                                                     .font(.custom("Uber Move Medium", size: 12))
                                                 Spacer()
                                             }
@@ -360,7 +398,7 @@ struct CheckOut: View {
                                         Spacer()
                                         
                                         VStack{
-                                            Text(itemPrice)
+                                            Text(itemSubtotal)
                                                 .font(.custom("Uber Move Bold", size: 18))
                                         }
                                     }
@@ -372,7 +410,7 @@ struct CheckOut: View {
                                         HStack{
                                             Text(selectedSide.count > 3 ? "Subtotal w/ side" : "Subtotal")
                                             Spacer()
-                                            Text(selectedSide.count > 3 ? "$\(String(format: "%.2f", (Double(itemPrice.replacingOccurrences(of: "$", with: "", options: .literal, range: nil)) ?? 0) + 1.25))" : itemPrice)
+                                            Text(selectedSide.count > 3 ? "$\(String(format: "%.2f", (Double(savedItemTotalPrice.replacingOccurrences(of: "$", with: "", options: .literal, range: nil)) ?? 0) + 1.25))" : itemSubtotal)
                                             
                                             
                                         }
@@ -384,7 +422,7 @@ struct CheckOut: View {
                                         HStack {
                                             Text("You paid")
                                             Spacer()
-                                            Text(String(format: "$%.2f", selectedSide.count > 3 ? total + 1.25 : total))
+                                            Text("$" + savedItemTotalPrice)
                                         }
                                         .padding(.bottom, 8)
                                         .font(.custom("Uber Move Bold", size: 16))
@@ -435,6 +473,7 @@ struct CheckOut: View {
                                 Button(action: {
                                     presentationMode.wrappedValue.dismiss()
                                     isHidden = false
+                                
                                 }) {
                                     
                                     Text("Received Order")
@@ -451,7 +490,7 @@ struct CheckOut: View {
                                 HStack{
                                     Text("Only one order at a time allowed until March 1st")
                                         .foregroundColor(.gray.opacity(0.9))
-                                        .font(.custom("Uber Move Medium", size: 15))
+                                        .font(.custom("Uber Move Medium", size: 13))
                                     
                                     
                                     
@@ -485,10 +524,10 @@ struct CheckOut: View {
             
             
         }
-        
+        .navigationBarHidden(true)
     }
 }
 
 #Preview {
-    CheckOut(itemName: "ad", itemPrice: "ads", itemDescription: "ads", itemImage: "ads")
+    CheckOut(itemName: "Name Placeholder", itemPrice: "$12.99", itemDescription: "Description smaple", itemImage: "fettucine")
 }

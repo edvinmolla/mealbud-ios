@@ -7,13 +7,12 @@
 
 import Foundation
 
-struct DrinkItem: Identifiable {
+struct DrinkItem: Identifiable, Equatable {
     var id = UUID().uuidString
     let title: String
     let description: String
     let price: String
     let imageName: String
-    
 }
 
 
