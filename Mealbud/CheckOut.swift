@@ -16,7 +16,7 @@ func getCurrentAndFutureTimes() -> (currentTimePlus20: String, currentTimePlus40
     // Save the current time
     let formatter = DateFormatter()
     formatter.dateFormat = "h:mm a"
-    let currentTime = formatter.string(from: currentDate)
+//    let currentTime = formatter.string(from: currentDate)
     
     var leftEnd = "N/A"
     var rightEnd = "N/A"
@@ -167,7 +167,7 @@ struct CheckOut: View {
                         
                             Button(action: {
                                         // Use the URL scheme to open the messaging app with a pre-made message
-                                        let message = "Your pre-made message here"
+                                        let message = "Hey, how's my order looking?"
                                         let urlString = "sms://14244075941&body=\(message)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
                                         if let url = URL(string: urlString) {
                                             UIApplication.shared.open(url)

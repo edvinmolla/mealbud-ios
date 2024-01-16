@@ -10,6 +10,19 @@ struct MainEntry: View {
     
     @AppStorage("isHidden") var isHidden = false
     
+    
+    
+    // Function to check if the current time is between 11am and 3pm
+        func isOpen() -> Bool {
+            let calendar = Calendar.current
+            let currentDate = Date()
+            let openTime = calendar.date(bySettingHour: 11, minute: 0, second: 0, of: currentDate)!
+            let closeTime = calendar.date(bySettingHour: 15, minute: 0, second: 0, of: currentDate)!
+            
+            return currentDate >= openTime && currentDate <= closeTime
+        }
+    
+    
     var body: some View {
         
         
@@ -19,16 +32,42 @@ struct MainEntry: View {
             
             VStack(alignment: .leading) {
                 
+                HStack {
+                    Image("appicon")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 40, height: 20)
+                        .background(Color.red.opacity(12))
+                        .cornerRadius(2)
+                        .padding(.horizontal)
+                    
+                    Spacer()
+                    
+                    Capsule()
+                                           .foregroundColor(isOpen() ? Color.green : Color.red)
+                                           .overlay(
+                                               Text(isOpen() ? "Open" : "Closed")
+                                                   .foregroundColor(Color.white)
+                                                   .font(.custom("Uber Move Bold", size: 12))
+                                           )
+                                           .frame(width: 50, height: 25)
+                                           .padding(.horizontal, 10)
+                                
+                }
+                
                 HStack{
                     Image("samplebanner")
                         .resizable()
                         .scaledToFill()
                         .clipped()
+                        
+                        .cornerRadius(8)
                 }
+                .padding(.horizontal, 12)
                 .frame(width:UIScreen.main.bounds.width, height: 80)
                 .foregroundColor(.black)
-                .background(Color.black)
-                .padding(.top, 40)
+ 
+                .padding(.top, 20)
             
                 
                 Text("Rapid Delivery")
@@ -116,7 +155,7 @@ struct MainEntry: View {
                                 NavigationLink(destination: MenuView()) {
                                     
                                     RoundedRectangle(cornerRadius: 14)
-                                        .frame(width: geometry.size.width * 0.75, height: 150)
+                                        .frame(width: geometry.size.width * 0.75, height: 160)
                                         .foregroundColor(Color.red)
                                         .overlay(
                                             
@@ -149,13 +188,13 @@ struct MainEntry: View {
                                                         
                                                     }
                                                     HStack {
-                                                        Text("$0.35 Delivery • 10+ min")
+                                                        Text("$0.40 Delivery • 10+ min")
                                                             .font(.custom("Uber Move Medium", size: 14))
                                                             .foregroundColor(.white)
                                                             .padding(.horizontal)
                                                         Spacer()
                                                         Text("from $7.30")
-                                                            .font(.custom("Uber Move Bold", size: 16))
+                                                            .font(.custom("Uber Move Bold", size: 14))
                                                             .foregroundColor(.white)
                                                             .padding(.horizontal)
                                                         
@@ -179,7 +218,7 @@ struct MainEntry: View {
                                 NavigationLink(destination: tbMenuView()) {
                                     
                                     RoundedRectangle(cornerRadius: 14)
-                                        .frame(width: geometry.size.width * 0.75, height: 150)
+                                        .frame(width: geometry.size.width * 0.75, height: 160)
                                         .foregroundColor(Color.red)
                                         .overlay(
                                             
@@ -212,14 +251,14 @@ struct MainEntry: View {
                                                         
                                                     }
                                                     HStack {
-                                                        Text("$0.35 Delivery • 10+ min")
+                                                        Text("$0.40 Delivery • 10+ min")
                                                             .font(.custom("Uber Move Medium", size: 14))
                                                             .foregroundColor(.white)
                                                             .padding(.horizontal)
                                                         Spacer()
                                                         
                                                         Text("from $7.30")
-                                                            .font(.custom("Uber Move Bold", size: 16))
+                                                            .font(.custom("Uber Move Bold", size: 14))
                                                             .foregroundColor(.white)
                                                             .padding(.horizontal)
                                                     }

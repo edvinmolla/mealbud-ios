@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct tbSideRadio: View {
-    var foodSide = ["Extra Beef", "no shit"]
-    var drinkSide = ["Pepsi", "Dr Pepper", "Fanta", "Diet Fanta"]
+//    var foodSide = ["Extra Beef", "no shit"]
+    var drinkSide = ["Sprite", "Coke", "Diet Coke", "Fanta", "Diet Fanta", "Vitamin Water", "Lemonade", "Creme Soda"]
     
     @AppStorage("selectedSide") var selectedSide = ""
     @AppStorage("selectedDrink") var selectedDrink = ""
