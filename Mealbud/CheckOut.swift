@@ -310,7 +310,7 @@ struct CheckOut: View {
                                             Image(systemName: "checkmark.circle.fill").foregroundColor(.green)
                                             Text("Payment complete!")
                                                 .onAppear {
-                                                    makeAPICall()
+                                                    
                                                     selectedSide = ""
                                                     selectedDrink = ""
                                                     applePayPrice = ""
@@ -319,8 +319,9 @@ struct CheckOut: View {
                                                     savedItemDescription = itemDescription
                                                     itemSubtotal = itemPrice
                                                     savedItemImage = itemImage
-                                                    savedItemTotalPrice = String(format: "%.2f", total)
+                                                    savedItemTotalPrice = String(format: "%.2f", selectedSide.count > 3 ? total + 1.25 : total)
                                                     isHidden = true
+                                                    makeAPICall()
                                                 }
                                             
                                             
