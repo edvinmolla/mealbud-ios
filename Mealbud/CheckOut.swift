@@ -109,9 +109,9 @@ struct CheckOut: View {
     var body: some View {
         
         let subtotal = Double(itemPrice.replacingOccurrences(of: "$", with: "", options: .literal, range: nil)) ?? 0
-        let delivery = 2.00
-        let tax = 0.00
-        let service = 0.35
+        let delivery = 2.50
+        let tax = 0.99
+        let service = 0.40
         let total = subtotal + delivery + tax + service
         
         NavigationView {
@@ -193,7 +193,7 @@ struct CheckOut: View {
                             Form {
                                 Section(header: Text("Deliver to"))
                                 {
-                                    TextField("Office/Delivery location", text: $location)
+                                    TextField("Delivery details", text: $location)
                                     TextField("Phone number", text: $phone)
                                 }
                                 
@@ -248,19 +248,19 @@ struct CheckOut: View {
                                         .padding(.vertical,2)
                                         .padding(.top, 8)
                                         HStack{
-                                            Text("Delivery")
+                                            Text("Delivery fee")
                                             Spacer()
-                                            Text("$2.00")
+                                            Text("$2.50")
                                         } .padding(.vertical,2)
                                         HStack{
-                                            Text("Tax")
+                                            Text("Taxes")
                                             Spacer()
-                                            Text("$0.00")
+                                            Text("$0.99")
                                         } .padding(.vertical,2)
                                         HStack{
-                                            Text("Service")
+                                            Text("Service fee")
                                             Spacer()
-                                            Text("$0.35")
+                                            Text("$0.40")
                                         }
                                         Divider()
                                         
@@ -292,7 +292,7 @@ struct CheckOut: View {
                                 if backendModel.paymentIntentParams != nil {
                                     
                                     PaymentButton() {
-                                        applePayPrice = String(format: "%.2f", total)
+                                        applePayPrice = String(format: "%.2f", selectedSide.count > 3 ? total + 1.25 : total)
                                         applePayModel.pay(clientSecret: backendModel.paymentIntentParams?.clientSecret)
                                     }
                                     .padding(.horizontal)

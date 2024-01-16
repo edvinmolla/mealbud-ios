@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "Blog_Cover_1288X400_-_2021-12-21T115737.596.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

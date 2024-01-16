@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C091B3C2B55FA6200CDF943 /* tbSideRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C091B3B2B55FA6200CDF943 /* tbSideRadio.swift */; };
 		2C0956392B4CF7F10067F0AB /* DrinkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0956382B4CF7F10067F0AB /* DrinkItem.swift */; };
 		2C0DD6E12B4781400033C19C /* fullsheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DD6E02B4781400033C19C /* fullsheet.swift */; };
 		2C0DD6E32B47930F0033C19C /* CheckOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DD6E22B47930F0033C19C /* CheckOut.swift */; };
@@ -18,6 +19,12 @@
 		2C37A91C2B411F5000ECF9A7 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C37A91B2B411F5000ECF9A7 /* MenuView.swift */; };
 		2C37A91E2B41205000ECF9A7 /* OffsetKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C37A91D2B41205000ECF9A7 /* OffsetKey.swift */; };
 		2C37A9202B41205800ECF9A7 /* OffsetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C37A91F2B41205800ECF9A7 /* OffsetModifier.swift */; };
+		2C5A58BE2B55D0DD003C2C3B /* tbItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5A58BD2B55D0DD003C2C3B /* tbItemView.swift */; };
+		2C7017282B55B7D000820467 /* tbMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7017272B55B7D000820467 /* tbMenuView.swift */; };
+		2C70172A2B55B7EB00820467 /* tbMenuItemSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7017292B55B7EB00820467 /* tbMenuItemSection.swift */; };
+		2C70172C2B55B81B00820467 /* tbMenuOptionsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C70172B2B55B81B00820467 /* tbMenuOptionsList.swift */; };
+		2C70172E2B55B84200820467 /* tbMenuBarOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C70172D2B55B84200820467 /* tbMenuBarOptions.swift */; };
+		2C7017302B55B8A700820467 /* tbOffsetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C70172F2B55B8A700820467 /* tbOffsetModifier.swift */; };
 		2C97A6472B50678500077579 /* MenuDrinkOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C97A6462B50678500077579 /* MenuDrinkOptions.swift */; };
 		2CA94E5D2B46B42C0032F746 /* tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA94E5C2B46B42C0032F746 /* tutorial.swift */; };
 		2CAE16902B3F9673006E6372 /* MealbudApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE168F2B3F9673006E6372 /* MealbudApp.swift */; };
@@ -48,6 +55,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C091B3B2B55FA6200CDF943 /* tbSideRadio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tbSideRadio.swift; sourceTree = "<group>"; };
 		2C0956382B4CF7F10067F0AB /* DrinkItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkItem.swift; sourceTree = "<group>"; };
 		2C0DD6E02B4781400033C19C /* fullsheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fullsheet.swift; sourceTree = "<group>"; };
 		2C0DD6E22B47930F0033C19C /* CheckOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOut.swift; sourceTree = "<group>"; };
@@ -59,6 +67,12 @@
 		2C37A91B2B411F5000ECF9A7 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		2C37A91D2B41205000ECF9A7 /* OffsetKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetKey.swift; sourceTree = "<group>"; };
 		2C37A91F2B41205800ECF9A7 /* OffsetModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetModifier.swift; sourceTree = "<group>"; };
+		2C5A58BD2B55D0DD003C2C3B /* tbItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tbItemView.swift; sourceTree = "<group>"; };
+		2C7017272B55B7D000820467 /* tbMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tbMenuView.swift; sourceTree = "<group>"; };
+		2C7017292B55B7EB00820467 /* tbMenuItemSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tbMenuItemSection.swift; sourceTree = "<group>"; };
+		2C70172B2B55B81B00820467 /* tbMenuOptionsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tbMenuOptionsList.swift; sourceTree = "<group>"; };
+		2C70172D2B55B84200820467 /* tbMenuBarOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tbMenuBarOptions.swift; sourceTree = "<group>"; };
+		2C70172F2B55B8A700820467 /* tbOffsetModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tbOffsetModifier.swift; sourceTree = "<group>"; };
 		2C97A6462B50678500077579 /* MenuDrinkOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDrinkOptions.swift; sourceTree = "<group>"; };
 		2CA94E5C2B46B42C0032F746 /* tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tutorial.swift; sourceTree = "<group>"; };
 		2CAE168C2B3F9673006E6372 /* Mealbud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mealbud.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,21 +143,28 @@
 				2C0DD6E02B4781400033C19C /* fullsheet.swift */,
 				2C0DD6E22B47930F0033C19C /* CheckOut.swift */,
 				2CF067A12B43A28900DABA09 /* ItemView.swift */,
+				2C5A58BD2B55D0DD003C2C3B /* tbItemView.swift */,
 				2CB798032B47EB7A00462335 /* HelperViews */,
 				2CB798022B47EB6200462335 /* Model */,
 				2CB797F82B47E43600462335 /* ApplePay.swift */,
 				2C272CEE2B4680AF0064F539 /* SideRadio.swift */,
+				2C091B3B2B55FA6200CDF943 /* tbSideRadio.swift */,
 				2C37A9132B41168E00ECF9A7 /* MenuItemSection.swift */,
+				2C7017292B55B7EB00820467 /* tbMenuItemSection.swift */,
+				2C7017272B55B7D000820467 /* tbMenuView.swift */,
 				2CF0679E2B439FD700DABA09 /* Restaurant */,
 				2C37A91B2B411F5000ECF9A7 /* MenuView.swift */,
 				2CF067A02B439FEF00DABA09 /* Item */,
 				2C37A91D2B41205000ECF9A7 /* OffsetKey.swift */,
 				2CF067992B439DAD00DABA09 /* Fonts */,
 				2C37A91F2B41205800ECF9A7 /* OffsetModifier.swift */,
+				2C70172F2B55B8A700820467 /* tbOffsetModifier.swift */,
 				2C37A9152B4116F900ECF9A7 /* FoodItem.swift */,
 				2C0956382B4CF7F10067F0AB /* DrinkItem.swift */,
 				2C37A9112B4114CC00ECF9A7 /* MenuOptionsList.swift */,
+				2C70172B2B55B81B00820467 /* tbMenuOptionsList.swift */,
 				2C37A90F2B4113F800ECF9A7 /* MenuBarOptions.swift */,
+				2C70172D2B55B84200820467 /* tbMenuBarOptions.swift */,
 				2C97A6462B50678500077579 /* MenuDrinkOptions.swift */,
 				2CE847132B3FBD5100CBAF9D /* CustomTabBar.swift */,
 				2CAE16932B3F9674006E6372 /* Assets.xcassets */,
@@ -301,18 +322,25 @@
 				2CAE16922B3F9673006E6372 /* MainEntry.swift in Sources */,
 				2CB798012B47E58100462335 /* PaymentMethods.swift in Sources */,
 				2C37A9162B4116F900ECF9A7 /* FoodItem.swift in Sources */,
+				2C5A58BE2B55D0DD003C2C3B /* tbItemView.swift in Sources */,
+				2C7017302B55B8A700820467 /* tbOffsetModifier.swift in Sources */,
 				2CB797F92B47E43600462335 /* ApplePay.swift in Sources */,
 				2C37A91C2B411F5000ECF9A7 /* MenuView.swift in Sources */,
 				2CF067A22B43A28900DABA09 /* ItemView.swift in Sources */,
 				2C37A91E2B41205000ECF9A7 /* OffsetKey.swift in Sources */,
+				2C091B3C2B55FA6200CDF943 /* tbSideRadio.swift in Sources */,
+				2C70172E2B55B84200820467 /* tbMenuBarOptions.swift in Sources */,
 				2CE847142B3FBD5100CBAF9D /* CustomTabBar.swift in Sources */,
 				2CA94E5D2B46B42C0032F746 /* tutorial.swift in Sources */,
+				2C70172A2B55B7EB00820467 /* tbMenuItemSection.swift in Sources */,
 				2CAE16902B3F9673006E6372 /* MealbudApp.swift in Sources */,
+				2C70172C2B55B81B00820467 /* tbMenuOptionsList.swift in Sources */,
 				2C0DD6E12B4781400033C19C /* fullsheet.swift in Sources */,
 				2C37A9102B4113F800ECF9A7 /* MenuBarOptions.swift in Sources */,
 				2CB7980B2B47EBCC00462335 /* PaymentMethodList.swift in Sources */,
 				2C0DD6E32B47930F0033C19C /* CheckOut.swift in Sources */,
 				2C37A9202B41205800ECF9A7 /* OffsetModifier.swift in Sources */,
+				2C7017282B55B7D000820467 /* tbMenuView.swift in Sources */,
 				2CB797FB2B47E53C00462335 /* BackendModel.swift in Sources */,
 				2C97A6472B50678500077579 /* MenuDrinkOptions.swift in Sources */,
 				2CB797FD2B47E55D00462335 /* ApplePayModel.swift in Sources */,
@@ -448,7 +476,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Mealbud/Mealbud.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_ASSET_PATHS = "\"Mealbud/Preview Content\"";
 				DEVELOPMENT_TEAM = 26K5J6537C;
 				ENABLE_PREVIEWS = YES;
@@ -467,7 +495,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mealbud.stable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -486,7 +514,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Mealbud/Mealbud.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_ASSET_PATHS = "\"Mealbud/Preview Content\"";
 				DEVELOPMENT_TEAM = 26K5J6537C;
 				ENABLE_PREVIEWS = YES;
@@ -505,7 +533,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mealbud.stable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

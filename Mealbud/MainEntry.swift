@@ -15,9 +15,21 @@ struct MainEntry: View {
         
         NavigationView {
             
+            
+            
             VStack(alignment: .leading) {
                 
-                
+                HStack{
+                    Image("samplebanner")
+                        .resizable()
+                        .scaledToFill()
+                        .clipped()
+                }
+                .frame(width:UIScreen.main.bounds.width, height: 80)
+                .foregroundColor(.black)
+                .background(Color.black)
+                .padding(.top, 40)
+            
                 
                 Text("Rapid Delivery")
                     .fontWeight(.bold)
@@ -104,7 +116,7 @@ struct MainEntry: View {
                                 NavigationLink(destination: MenuView()) {
                                     
                                     RoundedRectangle(cornerRadius: 14)
-                                        .frame(width: geometry.size.width * 0.92, height: 200)
+                                        .frame(width: geometry.size.width * 0.75, height: 150)
                                         .foregroundColor(Color.red)
                                         .overlay(
                                             
@@ -133,10 +145,7 @@ struct MainEntry: View {
                                                             .foregroundColor(.white)
                                                             .padding(.horizontal)
                                                         Spacer()
-                                                        Text("from $7.30")
-                                                            .font(.custom("Uber Move Bold", size: 16))
-                                                            .foregroundColor(.white)
-                                                            .padding(.horizontal)
+                                                      
                                                         
                                                     }
                                                     HStack {
@@ -145,7 +154,10 @@ struct MainEntry: View {
                                                             .foregroundColor(.white)
                                                             .padding(.horizontal)
                                                         Spacer()
-                                                        
+                                                        Text("from $7.30")
+                                                            .font(.custom("Uber Move Bold", size: 16))
+                                                            .foregroundColor(.white)
+                                                            .padding(.horizontal)
                                                         
                                                     }
                                                     
@@ -164,15 +176,80 @@ struct MainEntry: View {
                                 }
                                 .buttonStyle(PlainButtonStyle())
                                 
+                                NavigationLink(destination: tbMenuView()) {
+                                    
+                                    RoundedRectangle(cornerRadius: 14)
+                                        .frame(width: geometry.size.width * 0.75, height: 150)
+                                        .foregroundColor(Color.red)
+                                        .overlay(
+                                            
+                                            ZStack {
+                                                
+                                                Image("tbBanner")
+                                                    .resizable()
+                                                    .cornerRadius(14)
+                                                
+                                                LinearGradient(
+                                                    gradient: Gradient(
+                                                        colors: [Color.black.opacity(0.5), Color.black.opacity(0.5)]),
+                                                    startPoint: .bottom,
+                                                    endPoint: .top
+                                                )
+                                                .edgesIgnoringSafeArea(.all)
+                                                .cornerRadius(14)
+                                                
+                                                
+                                                VStack {
+                                                    Spacer()
+                                                    
+                                                    HStack {
+                                                        Text("Taco Bell at UCLA")
+                                                            .font(.custom("Uber Move Bold", size: 23))
+                                                            .foregroundColor(.white)
+                                                            .padding(.horizontal)
+                                                        Spacer()
+                                                       
+                                                        
+                                                    }
+                                                    HStack {
+                                                        Text("$0.35 Delivery • 10+ min")
+                                                            .font(.custom("Uber Move Medium", size: 14))
+                                                            .foregroundColor(.white)
+                                                            .padding(.horizontal)
+                                                        Spacer()
+                                                        
+                                                        Text("from $7.30")
+                                                            .font(.custom("Uber Move Bold", size: 16))
+                                                            .foregroundColor(.white)
+                                                            .padding(.horizontal)
+                                                    }
+                                                    
+                                                    
+                                                }
+                                                .padding(.bottom, 10)
+                                                
+                                                
+                                            }
+                                            
+                                            
+                                            
+                                            
+                                        )
+                                    
+                                }
+                                .buttonStyle(PlainButtonStyle())
                                 
                                 
                             }.padding(.horizontal, 15)
                             
                         }
                         
+                        
                     }
-                    
-                    
+                   
+                
+                
+          
                     Spacer()
                     
                     
