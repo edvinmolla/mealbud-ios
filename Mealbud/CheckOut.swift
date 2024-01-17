@@ -448,30 +448,33 @@ struct CheckOut: View {
                                     
                                 }
                                 
-                                Section {
-                                    VStack(spacing: 10){
-                                        HStack{
-                                            Text(selectedSide.count > 3 ? "Subtotal w/ side" : "Subtotal")
-                                            Spacer()
-                                            Text(selectedSide.count > 3 ? "$\(String(format: "%.2f", (Double(itemPrice.replacingOccurrences(of: "$", with: "", options: .literal, range: nil)) ?? 0) + 1.25))" : itemPrice)
-                                            
-                                            
-                                        }
-                                        .padding(.vertical,2)
-                                        .padding(.top, 8)
-                                        
-                                        
-                                        
-                                        HStack {
-                                            Text("You paid")
-                                            Spacer()
-                                            Text("$" + savedItemTotalPrice)
-                                        }
-                                        .padding(.bottom, 8)
-                                        .font(.custom("Uber Move Bold", size: 16))
-                                    }
-                                    .font(.custom("Uber Move Medium", size: 16))
-                                }
+//                                Section {
+//                                    VStack(spacing: 10){
+//                                        HStack{
+//                                            Text(selectedSide.count > 3 ? "Subtotal w/ side" : "Subtotal")
+//                                            Spacer()
+//                                            Text(selectedSide.count > 3 ? "$\(String(format: "%.2f", (Double(itemPrice.replacingOccurrences(of: "$", with: "", options: .literal, range: nil)) ?? 0) + 1.25))" : itemSubtotal)
+//                                            
+//                                            
+//                                        }
+//                                        .padding(.vertical,2)
+//                                        .padding(.top, 8)
+//                                        
+//                                        
+//                                        
+//                                        HStack {
+//                                            Text("You paid")
+//                                            Spacer()
+//                                            Text(selectedSide.count > 3 ? "$\(String(format: "%.2f", (Double(itemSubtotal.replacingOccurrences(of: "$", with: "", options: .literal, range: nil)) ?? 0) +  0.99 + 2.50 + 0.40 + 1.25))" : "$\(String(format: "%.2f", (Double(itemSubtotal.replacingOccurrences(of: "$", with: "", options: .literal, range: nil)) ?? 0) +  0.99 + 2.50 + 0.40))")
+//                                           
+//                                            
+////                                            Text(savedItemTotalPrice)
+//                                        }
+//                                        .padding(.bottom, 8)
+//                                        .font(.custom("Uber Move Bold", size: 16))
+//                                    }
+//                                    .font(.custom("Uber Move Medium", size: 16))
+//                                }
                                 
                                 Section {
                                     VStack(spacing: 10) {
