@@ -161,6 +161,8 @@ struct CheckOut: View {
                             HStack(spacing: 10) {
                                 Button {
                                     presentationMode.wrappedValue.dismiss()
+                                    
+                                      
                                 } label: {
                                     Image(systemName: "arrow.left.circle.fill")
                                         .font(.system(size: 27))
@@ -354,11 +356,12 @@ struct CheckOut: View {
                                                     savedItemDescription = itemDescription
                                                     itemSubtotal = itemPrice
                                                     savedItemImage = itemImage
+                                                    savedItemTotalPrice = String(format: "%.2f", selectedSide.count > 3 ? total + 1.25 : total)
                                                     
                                                     isHidden = true
                                                     makeAPICall()
-//                                                    selectedSide = ""
-//                                                    selectedDrink = ""
+                                                    selectedSide = ""
+                                                    selectedDrink = ""
                                                     applePayPrice = ""
                                                 }
                                             
@@ -511,6 +514,7 @@ struct CheckOut: View {
                             VStack {
                                 
                                 Button(action: {
+                                   
                                     presentationMode.wrappedValue.dismiss()
                                     isHidden = false
                                 

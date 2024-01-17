@@ -12,6 +12,8 @@ struct ItemView: View {
     @Environment(\.presentationMode) var presentationMode
     @State var showSheet: Bool = false
    
+    @AppStorage("selectedSide") var selectedSide = ""
+    @AppStorage("selectedDrink") var selectedDrink = ""
     
     var itemName: String
     var itemDescription: String
@@ -57,6 +59,8 @@ struct ItemView: View {
                                         .padding(.horizontal)
                                         .onTapGesture {
                                             presentationMode.wrappedValue.dismiss()
+                                            selectedSide = ""
+                                            selectedDrink = ""
                                         }
                                     
                                     Spacer()
