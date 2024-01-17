@@ -66,6 +66,40 @@ struct CheckOut: View {
     @AppStorage("itemSubtotal") var itemSubtotal = ""
     @AppStorage("savedItemTotalPrice") var savedItemTotalPrice = ""
     
+    func setAmount() {
+        // Your API endpoint URL
+        let apiUrl = URL(string: "https://mealbud.us/setamount")!
+        
+        // Prepare the data to be sent in the POST request
+        let postData: [String: Any] = [
+            "amount": savedItemTotalPrice,
+           
+        ]
+        
+        // Convert the data to JSON
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: postData) else {
+            print("Error converting data to JSON")
+            return
+        }
+        
+        var request = URLRequest(url: apiUrl)
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+        
+        // Set headers if needed
+        // request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        // Create a URLSession task for the request
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error: \(error)")
+            } else if let data = data {
+                // Handle the response data as needed
+                print("API call successful. Response: \(String(data: data, encoding: .utf8) ?? "")")
+            }
+        }.resume()
+    }
+    
     func makeAPICall() {
         // Your API endpoint URL
         let apiUrl = URL(string: "https://mealbud.us/sendorder")!
@@ -289,11 +323,14 @@ struct CheckOut: View {
                             
                             
                             VStack {
+                                
                                 if backendModel.paymentIntentParams != nil {
                                     
                                     PaymentButton() {
+                                        
                                         applePayPrice = String(format: "%.2f", selectedSide.count > 3 ? total + 1.25 : total)
                                         applePayModel.pay(clientSecret: backendModel.paymentIntentParams?.clientSecret)
+                                    
                                     }
                                     .padding(.horizontal)
                                 } else {
@@ -311,17 +348,18 @@ struct CheckOut: View {
                                             Text("Payment complete!")
                                                 .onAppear {
                                                     
-                                                    selectedSide = ""
-                                                    selectedDrink = ""
-                                                    applePayPrice = ""
+                                                  
                                                     presentationMode.wrappedValue.dismiss()
                                                     savedItemName = itemName
                                                     savedItemDescription = itemDescription
                                                     itemSubtotal = itemPrice
                                                     savedItemImage = itemImage
-                                                    savedItemTotalPrice = String(format: "%.2f", selectedSide.count > 3 ? total + 1.25 : total)
+                                                    
                                                     isHidden = true
                                                     makeAPICall()
+//                                                    selectedSide = ""
+//                                                    selectedDrink = ""
+                                                    applePayPrice = ""
                                                 }
                                             
                                             
@@ -357,6 +395,7 @@ struct CheckOut: View {
                     } else {
                         
                         VStack {
+                            
                             Form {
                                 Section(header: Text("Delivering to"))
                                 {
@@ -411,7 +450,7 @@ struct CheckOut: View {
                                         HStack{
                                             Text(selectedSide.count > 3 ? "Subtotal w/ side" : "Subtotal")
                                             Spacer()
-                                            Text(selectedSide.count > 3 ? "$\(String(format: "%.2f", (Double(savedItemTotalPrice.replacingOccurrences(of: "$", with: "", options: .literal, range: nil)) ?? 0) + 1.25))" : itemSubtotal)
+                                            Text(selectedSide.count > 3 ? "$\(String(format: "%.2f", (Double(itemPrice.replacingOccurrences(of: "$", with: "", options: .literal, range: nil)) ?? 0) + 1.25))" : itemPrice)
                                             
                                             
                                         }
@@ -520,11 +559,17 @@ struct CheckOut: View {
                 
                 
             }
-            
+                .onAppear {
+                                 
+                    savedItemTotalPrice = String(format: "%.2f", selectedSide.count > 3 ? total + 1.25 : total)
+                    
+                    setAmount()
+                               }
             
             
             
         }
+        
         .navigationBarHidden(true)
     }
 }

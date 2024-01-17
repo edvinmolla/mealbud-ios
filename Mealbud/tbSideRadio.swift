@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct tbSideRadio: View {
-//    var foodSide = ["Extra Beef", "no shit"]
+    var foodSide = ["Extra Beef", "no shit"]
     var drinkSide = ["Sprite", "Coke", "Diet Coke", "Fanta", "Diet Fanta", "Vitamin Water", "Lemonade", "Creme Soda"]
     
     @AppStorage("selectedSide") var selectedSide = ""
@@ -64,6 +64,7 @@ struct tbSideRadio: View {
 //                .padding(.top, 20)
             
             VStack {
+            
                 HStack {
                     Text("Select Drink")
                         .font(.custom("Uber Move Bold", size: 22))

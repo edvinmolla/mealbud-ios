@@ -7,6 +7,7 @@
 
 import Foundation
 import Stripe
+import SwiftUI
 
 class BackendModel : ObservableObject {
     @Published var paymentStatus: STPPaymentHandlerActionStatus?
@@ -14,6 +15,7 @@ class BackendModel : ObservableObject {
     @Published var lastPaymentError: NSError?
     var paymentMethodType: String?
     var currency: String?
+
 
     func preparePaymentIntent(paymentMethodType: String, currency: String) {
         self.paymentMethodType = paymentMethodType
