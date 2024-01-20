@@ -13,14 +13,26 @@ struct MainEntry: View {
     
     
     // Function to check if the current time is between 11am and 3pm
-        func isOpen() -> Bool {
-            let calendar = Calendar.current
-            let currentDate = Date()
-            let openTime = calendar.date(bySettingHour: 11, minute: 0, second: 0, of: currentDate)!
-            let closeTime = calendar.date(bySettingHour: 15, minute: 0, second: 0, of: currentDate)!
-            
-            return currentDate >= openTime && currentDate <= closeTime
+    func isOpen() -> Bool {
+        let calendar = Calendar.current
+        let currentDate = Date()
+        
+        // Check if it's a weekend (Saturday or Sunday)
+        let isWeekend = calendar.component(.weekday, from: currentDate) == 1 || calendar.component(.weekday, from: currentDate) == 7
+        
+        // Return false if it's a weekend
+        if isWeekend {
+            return false
         }
+        
+        // Set the opening and closing times
+        let openTime = calendar.date(bySettingHour: 11, minute: 0, second: 0, of: currentDate)!
+        let closeTime = calendar.date(bySettingHour: 15, minute: 0, second: 0, of: currentDate)!
+        
+        // Return true if the current time is within opening and closing times
+        return currentDate >= openTime && currentDate <= closeTime
+    }
+
     
     
     var body: some View {
