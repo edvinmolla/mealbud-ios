@@ -1,15 +1,32 @@
 
 import SwiftUI
+import UserNotifications
+
+
 
 struct MainEntry: View {
     @State var showSheet: Bool = false
     @State private var selectedDrinkItem: DrinkItem?
     @State private var isCheckOutPresented: Bool = false
     let drinkOption: MenuDrinkOptions
-    @AppStorage("drinkCheckout") var drinkCheckout = ""
-    
+    @State private var isSheetPresented = false
     @AppStorage("isHidden") var isHidden = false
+    @State private var notificationStatus: Bool = false
     
+    
+    func checkNotificationsPermission() {
+            UNUserNotificationCenter.current().getNotificationSettings { settings in
+                if settings.authorizationStatus == .authorized {
+                    print("Notifications are enabled for the app.")
+                    self.notificationStatus = true
+                } else if settings.authorizationStatus == .denied {
+                    print("Notifications are disabled for the app.")
+                    self.notificationStatus = false
+                } else if settings.authorizationStatus == .notDetermined {
+                    print("User hasn't decided about notifications yet.")
+                }
+            }
+        }
     
     
     // Function to check if the current time is between 11am and 3pm
@@ -32,12 +49,10 @@ struct MainEntry: View {
         // Return true if the current time is within opening and closing times
         return currentDate >= openTime && currentDate <= closeTime
     }
+    
+    
 
-    
-    
     var body: some View {
-        
-        
         NavigationView {
             
             
@@ -58,13 +73,21 @@ struct MainEntry: View {
                     Capsule()
                                            .foregroundColor(isOpen() ? Color.green : Color.red)
                                            .overlay(
-                                               Text(isOpen() ? "Open" : "Closed")
+                                               Text(isOpen() ? "Closes 4pm" : "Open M-F, 11a-3p")
                                                    .foregroundColor(Color.white)
                                                    .font(.custom("Uber Move Bold", size: 12))
                                            )
-                                           .frame(width: 50, height: 25)
+                                           .frame(width: 120, height: 25)
                                            .padding(.horizontal, 10)
                                 
+                }
+                .onAppear{
+                    checkNotificationsPermission()
+                    if notificationStatus {
+                        isSheetPresented = true
+                    }
+                  
+                    
                 }
                 
                 HStack{
@@ -304,11 +327,7 @@ struct MainEntry: View {
                     Spacer()
                     
                     
-                    if isHidden { // change
-                        
-                        
-                        
-                        //                Divider()
+                    if isHidden {
                         
                         HStack {
                             
@@ -356,45 +375,60 @@ struct MainEntry: View {
                     
                 }
             }
+        .sheet(isPresented: $isSheetPresented){
+            SheetView(isSheetPresented: $isSheetPresented)
+                .presentationDetents([.fraction(0.24)])
+        }
+        }
+}
+    
+struct SheetView: View {
+    @Binding var isSheetPresented: Bool
+    var body: some View {
+        VStack{
+            HStack{
+                Text("Enable notifications for a better experience.")
+                    .font(.custom("Uber Move Medium", size: 24))
+            }
+            .padding(.top, 20)
+            
+            Spacer()
+            
+            Button(action: {
+                openNotificationSettings()
+            }) {
+                
+           
             
             
+            Text("Enable Notifications")
+                .font(.custom("Uber Move Bold", size: 20))
+            
+                .foregroundColor(.white)
+               
+                .frame(width:UIScreen.main.bounds.width*0.9, height: 60)
+                .background(Color.black)
+                .cornerRadius(14)
+            }
+            Spacer()
         }
         
-        
-        
-        
-        
-        
-        
-        
-        
+                                            
     }
-    
-    
-    
-    
-    
-    
+}
 
 
+private func openNotificationSettings() {
+        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+            return
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        if UIApplication.shared.canOpenURL(settingsUrl) {
+            UIApplication.shared.open(settingsUrl, completionHandler: { success in
+                print("Settings opened: \(success)")
+            })
+        }
+    }
 
 #Preview{
     MainEntry(drinkOption: .drinks)
