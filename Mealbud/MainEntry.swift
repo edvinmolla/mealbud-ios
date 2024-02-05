@@ -11,17 +11,17 @@ struct MainEntry: View {
     let drinkOption: MenuDrinkOptions
     @State private var isSheetPresented = false
     @AppStorage("isHidden") var isHidden = false
-    @State private var notificationStatus: Bool = false
+    @AppStorage("notificationStatus") var notificationStatus: Bool = true
     
     
     func checkNotificationsPermission() {
             UNUserNotificationCenter.current().getNotificationSettings { settings in
                 if settings.authorizationStatus == .authorized {
                     print("Notifications are enabled for the app.")
-                    self.notificationStatus = true
+                    notificationStatus = true
                 } else if settings.authorizationStatus == .denied {
                     print("Notifications are disabled for the app.")
-                    self.notificationStatus = false
+                    notificationStatus = false
                 } else if settings.authorizationStatus == .notDetermined {
                     print("User hasn't decided about notifications yet.")
                 }
@@ -60,13 +60,25 @@ struct MainEntry: View {
             VStack(alignment: .leading) {
                 
                 HStack {
-                    Image("appicon")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 40, height: 20)
-                        .background(Color.red.opacity(12))
-                        .cornerRadius(2)
-                        .padding(.horizontal)
+                    
+                    Capsule()
+                        .foregroundColor(Color.black)
+                                           .overlay(
+                                               Text("Take survey")
+                                                   .foregroundColor(Color.white)
+                                                   .font(.custom("Uber Move Bold", size: 14))
+                                           )
+                                           .frame(width: 100, height: 35)
+                                           .padding(.horizontal, 10)
+                                           .onTapGesture {
+                                               // Open the URL in Safari
+                                               if let url = URL(string: "https://docs.google.com/forms/d/e/1FAIpQLScOC_aMxhO_b9ha-S8S8798KKM_rzTdMztj-oshTgCMnKy0bQ/viewform?usp=sf_link") {
+                                                   UIApplication.shared.open(url)
+                                               }
+                                           }
+                    
+                    
+             
                     
                     Spacer()
                     
@@ -77,13 +89,13 @@ struct MainEntry: View {
                                                    .foregroundColor(Color.white)
                                                    .font(.custom("Uber Move Bold", size: 12))
                                            )
-                                           .frame(width: 120, height: 25)
+                                           .frame(width: 120, height: 35)
                                            .padding(.horizontal, 10)
                                 
                 }
                 .onAppear{
                     checkNotificationsPermission()
-                    if notificationStatus {
+                    if !notificationStatus {
                         isSheetPresented = true
                     }
                   
@@ -326,6 +338,7 @@ struct MainEntry: View {
           
                     Spacer()
                     
+                
                     
                     if isHidden {
                         

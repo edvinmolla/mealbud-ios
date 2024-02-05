@@ -54,6 +54,7 @@ struct CheckOut: View {
     var itemDescription: String
     var itemImage: String
     
+    @State private var tipAmount: Double = 0
     @AppStorage("location") var location = ""
     @AppStorage("phone") var phone = ""
     @AppStorage("savedItemImage") var savedItemImage = ""
@@ -314,8 +315,15 @@ struct CheckOut: View {
                                 }
                                 
                                 
-                                
-                                
+//                                
+//                                HStack {
+//                                                       Text("Tip")
+//                                                       Spacer()
+//                                                       TextField("Enter tip amount", value: $tipAmount, formatter: NumberFormatter())
+//                                                           .keyboardType(.numberPad)
+//                                                           .textFieldStyle(RoundedBorderTextFieldStyle())
+//                                                           .frame(width: 100)
+//                                                   }
                                 
                                 
                                 
